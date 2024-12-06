@@ -35,7 +35,7 @@ const SearchBar = () => {
       {/* Filter menu toggle */}
       <div className="relative">
         <SlidersHorizontal
-          className="text-white ml-4 cursor-pointer transition-all duration-300 hover:text-[#00aaff]"
+          className="text-white mb-3 ml-1 md:ml-4 lg:ml-4 xl:ml-4 cursor-pointer transition-all duration-300 hover:text-[#00aaff]"
           onClick={toggleFilterMenu}
         />
 
