@@ -5,6 +5,8 @@ import Explore from './pages/Explore';
 import Test from './pages/Test';
 import './App.css'; 
 import Product from './pages/Product';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/pschometric-test" element={<Test />} />
             <Route path="/explore" element={<Explore />} /> 
+            <Route path="/login" element={<Login/>} /> 
+            <Route path="/signup" element={<SignUp/>} /> 
             <Route path="/product" element={<Product />} />
           </Routes>
        
