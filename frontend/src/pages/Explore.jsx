@@ -9,14 +9,7 @@ import SearchBar from "../components/SearchBar";
 const Explore = () => {
   const data = [
     {
-      logo: "",
-      productName: "Product Name",
-      noOfStars: 5,
-      description:
-        "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfdngjksdkfsdhfk",
-    },
-    {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
@@ -24,7 +17,7 @@ const Explore = () => {
     },
 
     {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
@@ -32,15 +25,16 @@ const Explore = () => {
     },
 
     {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
-        "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfhbjkhbjhkgbbbbbbdngjksdkfsdhfk",
+        "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfdngjksdkfsdhfk",
     },
 
+
     {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
@@ -48,7 +42,16 @@ const Explore = () => {
     },
 
     {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
+      productName: "Product Name",
+      noOfStars: 5,
+      description:
+        "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfdngjksdkfsdhfk",
+    },
+
+
+    {
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
@@ -56,7 +59,7 @@ const Explore = () => {
     },
 
     {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
@@ -64,7 +67,7 @@ const Explore = () => {
     },
 
     {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
@@ -72,7 +75,7 @@ const Explore = () => {
     },
 
     {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
@@ -80,20 +83,38 @@ const Explore = () => {
     },
 
     {
-      logo: "",
-      productName: "Product Name",
-      noOfStars: 5,
-      description:
-        "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfdngjksdkfsdhfk",
-    },
-    {
-      logo: "",
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
       productName: "Product Name",
       noOfStars: 5,
       description:
         "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfdngjksdkfsdhfk",
     },
 
+    {
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
+      productName: "Product Name",
+      noOfStars: 5,
+      description:
+        "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfdngjksdkfsdhfk",
+    },
+
+    {
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
+      productName: "Product Name",
+      noOfStars: 5,
+      description:
+        "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfdngjksdkfsdhfk",
+    },
+
+
+    {
+      logo: "https://static-00.iconduck.com/assets.00/general-awscloud-icon-2048x2048-3trjae80.png",
+      productName: "Product Name",
+      noOfStars: 5,
+      description:
+        "This is a brief description of the product.sdgbsjhgbf sjdgbgjdfsgb jfgfbgkdfgbkdjf gjkfdbgnkjlgnkfnbkljdsahfndsflhnasdkljgbnfdkjgbndfklgjkfhdgjkhdafnjgkhnadfkjhfdngjksdkfsdhfk",
+    },
+  
   ];
 
   const navigate = useNavigate();
