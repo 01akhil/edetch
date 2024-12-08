@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import fore_cleanup from "../assets/fore_cleanup.png";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 const Login = () => {
 
     const navigate = useNavigate();
@@ -12,16 +13,44 @@ const Login = () => {
     navigate('/signup'); // Redirect to /signup page
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Login attempt with:', email, password);
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, { email, password }, { withCredentials: true });
+      if (response.data.success) {
+        const { token } = response.data;
+        localStorage.setItem('token', token);
+        navigate('/explore'); 
+      } else {
+        alert(response.data.message); 
+      }
+    } catch (error) {
+      console.error('Login failed', error);
+      alert('An error occurred while logging in.');
+    }
   };
+
+  
+
+  const handleHome=()=>{
+    navigate('/'); // Redirect to /explore page
+  }
 
   return (
     <div
       className="w-[100vw] text-white min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center"
       style={{ backgroundImage: `url(${fore_cleanup})` }}
     >
+
+<div className="absolute top-4 left-4 z-10 flex">
+        <button
+          onClick={handleHome}
+          className="text-white font-semibold text-sm sm:text-lg  hover:text-[#00aaff] transition-all duration-300"
+        >
+          Home
+        </button>
+      </div>
+
       <div className="bg-transparent border-gray-50 p-4 rounded-lg shadow-lg lg:w-[50vw] md:w-[50vw] xl:w-[30vw] xl:h-[45vh]">
         <h1 className="text-xl font-bold text-center text-gray-100"></h1>
 
