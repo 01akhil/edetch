@@ -23,6 +23,10 @@ const LandingPage = () => {
     navigate("/login");
   };
 
+  const handleChatBot=()=>{
+    navigate("/bot");
+  }
+
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
@@ -107,6 +111,7 @@ const LandingPage = () => {
 
       <Marquee />
       <ContactUs />
+      <button onClick={handleChatBot} className="hover:bg-teal-900 w-[10vh] rounded-full bg-teal-950 fixed bottom-2 right-8 h-[10vh] text-white">ChatBot</button>
     </div>
   );
 };
