@@ -16,7 +16,7 @@ const Explore = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/get15`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/product/get15`);
         console.log(response.data)
         setProducts(response.data); // Set products in state
         setLoading(false);
@@ -194,7 +194,7 @@ const Explore = () => {
     setSelectedSubCategory(subcategory);
     
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/getProductsByCategory`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/product/getProductsByCategory`, {
         params: {
           subCategory: subcategory
         }

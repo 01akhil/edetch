@@ -10,6 +10,8 @@ import SignUp from './pages/SignUp';
 import ProtectedRoute from './components/ProtectedRoute';
 import Form from './pages/Form';
 import Bot from './pages/Bot';
+import CareerDetail from './pages/CareerDetail';
+import BrowseByIndustry from './pages/BrowseByIndustry';
 function App() {
   return (
     <Router> 
@@ -34,10 +36,24 @@ function App() {
               } /> 
 
 <Route path="/bot" element={
-              <ProtectedRoute>
+              
                 <Bot/>
+             
+              } /> 
+
+<Route path="/careers/:careerCode" element={
+              <ProtectedRoute>
+                <CareerDetail/>
               </ProtectedRoute>
               } /> 
+
+              <Route path="/careers/browse/:industryName" element={
+                <ProtectedRoute>
+                <BrowseByIndustry/>
+              </ProtectedRoute>
+              }/>
+
+              
 
             <Route path="/login" element={<Login/>} /> 
             <Route path="/signup" element={<SignUp/>} /> 

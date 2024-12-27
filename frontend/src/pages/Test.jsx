@@ -1,14 +1,21 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-// Define the answer options
+import Question from '../components/Question';
+import SubmitButton from '../components/SubmitButton';
+import CareerList from '../components/CareerList';
+import HomeButton from '../components/HomeButton';
+
+
+
 const answerOptions = [
-  { value: 1, label: "Strongly Dislike" },
-  { value: 2, label: "Dislike" },
-  { value: 3, label: "Unsure" },
-  { value: 4, label: "Like" },
-  { value: 5, label: "Strongly Like" }
+  { value: 1, label: 'Strongly Dislike' },
+  { value: 2, label: 'Dislike' },
+  { value: 3, label: 'Unsure' },
+  { value: 4, label: 'Like' },
+  { value: 5, label: 'Strongly Like' }
 ];
 
 const questions = [
@@ -75,45 +82,48 @@ const questions = [
   { "index": 60, "area": "Conventional", "text": "Stamp, sort, and distribute mail for an organization" }
 ];
 
+
 const Test = () => {
-
- 
-
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
-  const careerInfo = result?.careers?.career.map(career => ({
+  const navigate = useNavigate();
+
+  const careerInfo = result?.careers?.career.map((career) => ({
     career: career.title,
-    fit: career.$.fit
+    fit: career.$.fit,
+    code: career.code,
+    href: career.$.href
   }));
 
-  // Handle selection change
+  const handleCareerClick = (careerCode) => {
+    navigate(`/careers/${careerCode}`);
+  };
+
   const handleChange = (questionIndex, value) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
       [questionIndex]: value
     }));
 
-    // Automatically go to next question
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
 
-  // Generate the answer string
   const generateAnswerString = () => {
     let answerString = '';
     for (let i = 1; i <= questions.length; i++) {
-      answerString += answers[i] || '0';  // Default to '0' if no answer is selected
+      answerString += answers[i] || '0';
     }
     return answerString;
   };
 
-  // Submit answers to the server
-  const submitAnswers = async () => {
+  const submitAnswer = async () => {
+    console.log("reached hereee")
     setLoading(true);
     setError(null);
     const answerString = generateAnswerString();
@@ -128,84 +138,43 @@ const Test = () => {
       setLoading(false);
     }
   };
- 
-  const navigate = useNavigate();
-
-  const handleHome = () => {
-    navigate("/");
-  };
 
   return (
-    <div style={{
-      background: "linear-gradient(135deg, #111a19, #1b2928, #2a3d3c)",
-    }} className=" w-[100vw] h-[100vh] flex flex-col items-center justify-center">
-     
-      {/* Display the current question */}
-      <div className="mb-4">
-        <div className='fixed '>
-        <p className="font-bold  text-2xl lg:text-4xl xl:text-4xl text-white w-[100vw] mb-10">{questions[currentQuestionIndex].text}</p>
+    <div className="bg-[#1a1a1a] w-[100vw] h-[100vh] flex flex-col items-center justify-center">
+  
+      {!careerInfo && (
+        <div className="fixed">
+          <Question
+            question={questions[currentQuestionIndex]}
+            answerOptions={answerOptions}
+            selectedAnswer={answers[questions[currentQuestionIndex].index]}
+            onAnswerChange={handleChange}
+          />
         </div>
-        
-        <div className=''>
-        <div className="flex-col md:flex-row lg:flex-row xl:flex flex-wrap mt-20">
-          {answerOptions.map((option) => (
-            <label  key={option.value} className=" mr-4 mb-2 border-2 hover:bg-blue-700 xl:w-[12vw] lg:w-[12vw] rounded-md h-[10vh] flex items-center justify-center text-white text-xl">
-              <input
-                className='hidden'
-                type="radio"
-                name={`question-${questions[currentQuestionIndex].index}`}
-                value={option.value}
-                onChange={() => handleChange(questions[currentQuestionIndex].index, option.value)}
-                checked={answers[questions[currentQuestionIndex].index] === option.value}
-              />
-              {option.label}
-            </label>
-          ))}
-        </div>
-        </div>
-      </div>
+      )}
 
-      {/* Submit answers only when on the last question */}
+   
       {currentQuestionIndex === questions.length - 1 && (
-        <button
-          onClick={submitAnswers}
-          className="bg-green-500 w-[10vw] h-[7vh] text-white py-2 px-4 rounded-2xl mt-4"
-          disabled={loading}
-        >
-          {loading ? 'Loading...' : 'Submit'}
-        </button>
+        <SubmitButton onClick={submitAnswer} loading={loading}  />
       )}
 
       {loading && <p className="mt-4">Submitting your answers...</p>}
 
       {error && <p className="mt-4 text-red-500">{error}</p>}
 
-      {careerInfo && (
-        <div style={{
-          background: "linear-gradient(135deg, #111a19, #1b2928, #2a3d3c)",
-        }} className="mt-[70vh] w-[100vw] p-12 pb-20">
-          <button
-          onClick={handleHome}
-          className="text-white font-semibold fixed right-10 text-sm sm:text-lg hover:text-[#00aaff] transition-all duration-300"
-        >
-          Home
-        </button>
-          <div className='grid word-wrap'>
-          <h2 className="text-3xl font-semibold text-white ">Best Careers for you</h2>
-          <div className="space-y-4 mt-4 text-gray-50">
-            
-            {careerInfo.map((item, index) => (
-              <div key={index} className="flex justify-between border-b py-2">
-                <span className="font-medium">{item.career}</span>
-                <span className="text-sm text-gray-300">{item.fit}</span>
-              </div>
-            ))}
-          </div>
-          </div>
-        </div>
-      )}
+      {careerInfo && <CareerList careerInfo={careerInfo} onCareerClick={handleCareerClick} />}
+
+      {careerInfo && <HomeButton />}
     </div>
   );
 };
 
 export default Test;
+
+
+
+
+
+
+
+
