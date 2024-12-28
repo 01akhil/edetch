@@ -34,6 +34,33 @@ router.get('/careers', async (req, res) => {
 });
 
 
+router.get('/results', async (req, res) => {
+  const answers = req.query.answers;
+
+  try {
+    const url = `https://services.onetcenter.org/ws/mnm/interestprofiler/results?answers=${answers}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: authHeader,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) throw new Error(`API request failed with status: ${response.status}`);
+    const xmlText = await response.text();
+
+    xml2js.parseString(xmlText, { explicitArray: false }, (err, result) => {
+      if (err) return res.status(500).json({ error: 'Failed to parse XML response' });
+      res.json(result);
+    });
+  } catch (error) {
+    console.error('Error fetching ONET data:', error);
+    res.status(500).json({ error: 'Failed to fetch careers' });
+  }
+});
+
+
 
 router.get('/careers/:code', async (req, res) => {
   const code = req.params.code;

@@ -17,6 +17,7 @@ const Question = ({ question, answerOptions, selectedAnswer, onAnswerChange }) =
               value={option.value}
               onChange={() => onAnswerChange(question.index, option.value)}
               checked={selectedAnswer === option.value}
+              
             />
             {option.label}
           </label>

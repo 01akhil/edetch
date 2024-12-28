@@ -1,12 +1,11 @@
 
 import React, { useState } from 'react';
-import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 
 import Question from '../components/Question';
 import SubmitButton from '../components/SubmitButton';
-import CareerList from '../components/CareerList';
-import HomeButton from '../components/HomeButton';
+
 
 
 
@@ -87,17 +86,11 @@ const Test = () => {
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState(null);
+
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
-  const careerInfo = result?.careers?.career.map((career) => ({
-    career: career.title,
-    fit: career.$.fit,
-    code: career.code,
-    href: career.$.href
-  }));
 
   const handleCareerClick = (careerCode) => {
     navigate(`/careers/${careerCode}`);
@@ -123,26 +116,17 @@ const Test = () => {
   };
 
   const submitAnswer = async () => {
-    console.log("reached hereee")
     setLoading(true);
     setError(null);
     const answerString = generateAnswerString();
 
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/careers?answers=${answerString}`);
-      console.log(response.data)
-      setResult(response.data);
-    } catch (error) {
-      setError('Failed to fetch data from the server. Please try again later.');
-    } finally {
-      setLoading(false);
-    }
+   navigate('/psychometric-test/result',{state:{answerString: answerString}})
   };
 
   return (
     <div className="bg-[#1a1a1a] w-[100vw] h-[100vh] flex flex-col items-center justify-center">
   
-      {!careerInfo && (
+    
         <div className="fixed">
           <Question
             question={questions[currentQuestionIndex]}
@@ -151,7 +135,7 @@ const Test = () => {
             onAnswerChange={handleChange}
           />
         </div>
-      )}
+      
 
    
       {currentQuestionIndex === questions.length - 1 && (
@@ -162,9 +146,9 @@ const Test = () => {
 
       {error && <p className="mt-4 text-red-500">{error}</p>}
 
-      {careerInfo && <CareerList careerInfo={careerInfo} onCareerClick={handleCareerClick} />}
+     
 
-      {careerInfo && <HomeButton />}
+      
     </div>
   );
 };
