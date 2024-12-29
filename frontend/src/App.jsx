@@ -13,6 +13,7 @@ import Bot from './pages/Bot';
 import CareerDetail from './pages/CareerDetail';
 import BrowseByIndustry from './pages/BrowseByIndustry';
 import ResultPage from './pages/ResultPage';
+import SearchPage from './pages/SearchPage';
 function App() {
   return (
     <Router> 
@@ -57,6 +58,12 @@ function App() {
 <Route path="/psychometric-test/result" element={
                 <ProtectedRoute>
                 <ResultPage/>
+              </ProtectedRoute>
+              }/>
+
+<Route path="/search/:searchItem" element={
+                <ProtectedRoute>
+                <SearchPage/>
               </ProtectedRoute>
               }/>
 

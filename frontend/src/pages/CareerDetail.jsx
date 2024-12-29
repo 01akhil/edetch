@@ -159,7 +159,22 @@ const CareerDetail = () => {
     fetchExploreMore()
   }, [careerCode]);
 
+const[careerVideo,setCareerVideo]=useState(null);
+useEffect(()=>{
 
+  const fetchCareerVideo=async()=>{
+    try{
+      console.log(careerCode);
+      const response=await axios.get(`${import.meta.env.VITE_API_URL}/api/careerVideos/${careerCode}`)
+      console.log(response.data)
+      setCareerVideo(response.data.youtubeVideoPage)
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+  fetchCareerVideo()
+},[careerCode])
 
   const [education, setEducation] = useState(null);
 
@@ -206,18 +221,36 @@ const CareerDetail = () => {
          {careerDetail?.title}
         </motion.h1>
 
+
+
+      
+
+
+
+
         <div className="h-[100vh] flex flex-col gap-[15vh]">
-          <motion.div
+          <motion.div className='flex gap-1'
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
-            <p className="font-bold text-xl text-teal-400">Also called as</p>
+           <div className='flex flex-col gap-10 w-[42vw]'>
+           <p className="font-bold text-xl text-teal-400 ">Also called as</p>
             
             {Array.isArray(careerDetail?.also_called?.title) ? careerDetail?.also_called?.title.join(', ') : 'N/A'}
+           </div>
 
+         
           
+
+           
+      {careerVideo && (
+    <div className='mr-[4vh]' dangerouslySetInnerHTML={{ __html: careerVideo }} />
+  )}
+          
+
+
           </motion.div>
 
           <motion.div

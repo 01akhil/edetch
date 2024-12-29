@@ -1,33 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import SideBar from '../components/SideBar';
 import BotHeader from '../components/BotHeader';
 import { motion } from 'framer-motion';  
 import { CircleArrowRight } from 'lucide-react';
 
-const BrowseByIndustry = () => {
-  const location = useLocation();
-  const { industryCode } = location.state || {};
-  const navigate = useNavigate();  
+const SearchPage = () => {
+  const navigate = useNavigate();
+  const { searchItem } = useParams();
+  console.log(searchItem);
 
   const [careers, setCareers] = useState([]);
 
   useEffect(() => {
     const fetchCareers = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/industry/${industryCode}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/search/${searchItem}`);
         console.log(response.data);
-        setCareers(response.data.careers.career);  
+
+      
+        const fetchedCareers = response.data.careers.career;
+        setCareers(Array.isArray(fetchedCareers) ? fetchedCareers : [fetchedCareers]);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
 
-    if (industryCode) {
+    if (searchItem) {
       fetchCareers();
     }
-  }, [industryCode]);
+  }, [searchItem]);
 
   const handleCareerClick = (careerCode) => {
     navigate(`/careers/${careerCode}`);
@@ -48,14 +51,14 @@ const BrowseByIndustry = () => {
                   onClick={() => handleCareerClick(career.code)}
                   className="cursor-pointer px-4 py-2 rounded-lg bg-[#2c2d2c] hover:bg-[#343535] transition-colors duration-300 flex justify-between group"
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }} 
-                  transition={{ delay: index * 0.1, duration: 0.5 }} 
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <a href="" className="text-lg font-medium">{career.title}</a>
+                  <span className="text-lg font-medium">{career.title}</span>
                   <motion.div
-                    className="invisible group-hover:visible  group-hover:scale-105 flex justify-center items-center"
-                    initial={{opacity: 0, x: -20 }} 
-                    animate={{opacity: 1, x: 0 }} 
+                    className="invisible group-hover:visible group-hover:scale-105 flex justify-center items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
                   >
                     <CircleArrowRight />
@@ -70,4 +73,4 @@ const BrowseByIndustry = () => {
   );
 };
 
-export default BrowseByIndustry;
+export default SearchPage;

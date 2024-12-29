@@ -21,58 +21,49 @@ const ResultPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const [showPopup, setShowPopup] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
+
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const cards = [
     {
       title: "Realistic",
       color: "#FF6384",
       details:
-        "People with Realistic interests like work that includes practical, hands-on problems and answers. They often prefer working with plants and animals, and real-world materials like wood, tools, and machinery.",
+        "People with Realistic interests like work that includes practical, hands-on problems and answers. Often people with Realistic interests do not like careers that involve paperwork or working closely with others. They like working with plants and animals; real-world materials like wood, tools, and machinery; and outside work",
     },
     {
       title: "Investigative",
       color: "#36A2EB",
       details:
-        "People with Investigative interests enjoy work that involves theory, research, and intellectual inquiry. They prefer tasks that involve thinking, exploring, and analyzing.",
+        "People with Investigative interests like work that has to do with ideas and thinking rather than physical activity or leading people. They like searching for facts and figuring out problems.",
     },
     {
       title: "Artistic",
       color: "#FFCE56",
       details:
-        "People with Artistic interests like work that involves creativity, originality, and self-expression. They enjoy music, art, writing, and performing.",
+        "People with Artistic interests like work that deals with the artistic side of things, such as acting, music, art, and design. They like creativity in their work and work that can be done without following a set of rules",
     },
     {
       title: "Social",
       color: "#4BC0C0",
       details:
-        "People with Social interests prefer work that involves helping, teaching, and providing services to others. They enjoy working in supportive roles.",
+        "People with Social interests like working with others to help them learn and grow. They like working with people more than working with objects, machines, or information. They like teaching, giving advice, and helping and being of service to people.",
     },
     {
       title: "Enterprising",
       color: "#9966FF",
       details:
-        "People with Enterprising interests enjoy work that involves leadership, business, and persuasion. They are drawn to tasks that involve starting and managing projects.",
+        "People with Enterprising interests like work that has to do with starting up and carrying out business projects. These people like taking action rather than thinking about things. They like persuading and leading people, making decisions, and taking risks for profits.",
     },
     {
       title: "Conventional",
       color: "#FF9F40",
       details:
-        "People with Conventional interests like work that involves organization, planning, and data management. They prefer structured tasks and routines.",
+        "People with Conventional interests like work that follows set procedures and routines. They prefer working with information and paying attention to details rather than working with ideas. They like working with clear rules and following a strong leader.",
     },
   ];
 
-  const handleCardClick = (card) => {
-    setSelectedCard(card);
-    setShowPopup(true);
-  };
-
-  const closePopup = () => {
-    setShowPopup(false);
-    setSelectedCard(null);
-  };
-
+  
   const fetchResults = async (url, setter) => {
     setLoading(true);
     try {
@@ -141,7 +132,8 @@ const ResultPage = () => {
     : null;
 
   return (
-    <div className="w-full h-screen overflow-hidden flex justify-center bg-[#1a1a1a] text-white">
+    <div className="w-full h-screen overflow-hidden flex justify-center bg-[#1a1a1a] text-white"
+    style={{ fontFamily: 'Futura Now Headline' }}>
       <div className="flex w-full">
         <SideBar />
         <div className="flex flex-col items-center w-[80vw] text-white">
@@ -151,36 +143,35 @@ const ResultPage = () => {
           <main className="flex-grow w-full h-screen overflow-y-scroll">
             {chartData && (
               <div className="flex items-center justify-center w-[100%] h-[70vh] mb-[10vh]">
+               
                 <Pie data={chartData} />
-                <div className="grid grid-cols-3 gap-2">
-                  {cards.map((card) => (
-                    <div
-                      key={card.title}
-                      className="rounded-md h-[25vh] w-[12vw] text-2xl flex items-center justify-center cursor-pointer hover:scale-105 transition-transform duration-300"
-                      style={{ backgroundColor: card.color }}
-                      onClick={() => handleCardClick(card)}
-                    >
-                      <h3>{card.title}</h3>
-                    </div>
-                  ))}
+              
+                
+                <div className="flex flex-col gap-3 mt-[10vh]">
+     
+      <div className="grid grid-cols-3 gap-2">
+        {cards.map((card) => (
+          <div
+            key={card.title}
+            className="rounded-md h-[25vh] w-[12vw] text-2xl flex items-center justify-center cursor-pointer hover:scale-105 transition-transform duration-300"
+            style={{ backgroundColor: card.color }}
+            onMouseEnter={() => setHoveredCard(card)}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
+            <h3>{card.title}</h3>
+          </div>
+        ))}
+      </div>
 
-                  {showPopup && selectedCard && (
-                    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-                      <div className="bg-white rounded-md p-6 w-[50vw] text-black">
-                        <h3 className="text-2xl font-bold">
-                          {selectedCard.title} Interest Details
-                        </h3>
-                        <p className="mt-4 text-lg">{selectedCard.details}</p>
-                        <button
-                          className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                          onClick={closePopup}
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
+      
+      <div className=" p-2 rounded-md text-white w-[37vw] h-[20vh]">
+        <p>
+          {hoveredCard
+            ? hoveredCard.details
+            : "Hover over a card to see more information."}
+        </p>
+      </div>
+    </div>
               </div>
             )}
 
@@ -214,7 +205,7 @@ const ResultPage = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-center">No careers found.</p>
+              <p></p>
             )}
           </main>
         </div>
