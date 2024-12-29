@@ -7,7 +7,7 @@ const corsOptions=require('./config/cors')
 const productRouter=require('./routes/product/product-routes')
 const careerRouter=require('./routes/career/career-routes')
 const authRouter=require('./routes/auth/auth-routes')
-const careerVideo=require("./models/CareerVideo")
+
 
 connectDB()
 

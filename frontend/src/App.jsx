@@ -8,7 +8,7 @@ import Product from './pages/Product';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import ProtectedRoute from './components/ProtectedRoute';
-import Form from './pages/Form';
+
 import Bot from './pages/Bot';
 import CareerDetail from './pages/CareerDetail';
 import BrowseByIndustry from './pages/BrowseByIndustry';
@@ -31,11 +31,7 @@ function App() {
               </ProtectedRoute>
               } /> 
 
-<Route path="/form" element={
-              <ProtectedRoute>
-                <Form/>
-              </ProtectedRoute>
-              } /> 
+
 
 <Route path="/bot" element={
               

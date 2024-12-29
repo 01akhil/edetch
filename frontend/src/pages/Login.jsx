@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const handleSignUpRedirect = () => {
-    navigate('/signup'); // Redirect to /signup page
+    navigate('/signup');
   };
 
   const handleLogin = async (e) => {
@@ -33,7 +33,7 @@ const Login = () => {
   
 
   const handleHome=()=>{
-    navigate('/'); // Redirect to /explore page
+    navigate('/'); 
   }
 
   return (
