@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import fore_cleanup from "../assets/fore_cleanup.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios'
 const Login = () => {
 
     const navigate = useNavigate();
-
+const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,7 +20,9 @@ const Login = () => {
       if (response.data.success) {
         const { token } = response.data;
         localStorage.setItem('token', token);
-        navigate('/explore'); 
+        
+        const from=location.state?.from || '/eplore';
+        navigate(from);
       } else {
         alert(response.data.message); 
       }

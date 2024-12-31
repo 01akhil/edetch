@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import fore_cleanup from "../assets/fore_cleanup.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios'
 const SignUp = () => {
 
     const navigate = useNavigate();
-
+const location=useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,7 +18,7 @@ const handleSignUp=async (e)=>{
   try{
     const response=await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`,{email,password});
     if(response.data.success){
-      navigate('/explore'); // Redirect to /signup page
+      navigate(location.state?.from || '/explore'); 
     }
     else{
       alert(response.data.message);

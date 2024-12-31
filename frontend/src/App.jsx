@@ -34,9 +34,9 @@ function App() {
 
 
 <Route path="/bot" element={
-              
+              <ProtectedRoute>
                 <Bot/>
-             
+             </ProtectedRoute>
               } /> 
 
 <Route path="/careers/:careerCode" element={
@@ -67,7 +67,11 @@ function App() {
 
             <Route path="/login" element={<Login/>} /> 
             <Route path="/signup" element={<SignUp/>} /> 
-            <Route path="/product/:id" element={<Product />} />
+            <Route path="/product/:id" element={
+              <ProtectedRoute>
+                <Product />
+              </ProtectedRoute>
+            }/>
           </Routes>
        
     </Router>

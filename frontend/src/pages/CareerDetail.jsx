@@ -12,6 +12,16 @@ const CareerDetail = () => {
   const [careerDetail, setCareerDetail] = useState(null);
   const navigate = useNavigate();
 
+  const [isSliding, setIsSliding] = useState(false);
+
+
+  const handleClick = (path, state = {}) => {
+    setIsSliding(true);
+    setTimeout(() => {
+      navigate(path, { state });
+    }, 300); // Wait for the animation to complete before navigating
+  };
+
   useEffect(() => {
     const fetchCareerDetails = async () => {
       try {
@@ -527,7 +537,8 @@ const CareerDetail = () => {
                   )}
                 </div>
 
-                <div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
+
+                {/* <div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
                   <h1 className="uppercase font-bold text-2xl text-teal-400 text-center mb-4">
                     Explore More
                   </h1>
@@ -616,7 +627,79 @@ const CareerDetail = () => {
                       No related industries available.
                     </p>
                   )}
-                </div>
+                </div> */}
+
+
+
+<div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
+  <h1 className="uppercase font-bold text-2xl text-teal-400 text-center mb-4">
+    Explore More
+  </h1>
+
+  {exploreMore?.careers?.career?.length > 0 ? (
+    <div className="mb-6">
+      <ul className="space-y-2">
+        <div className="mb-6">
+          <h2 className="font-bold text-lg text-teal-400 mb-4 text-center">
+            Related Careers
+          </h2>
+          <ul className="space-y-2">
+            {exploreMore.careers.career.map((career, index) => {
+              const careerCode = career.code;
+              return (
+                <li key={index} className="bg-gray-700 p-3 rounded-lg text-sm">
+                  <a
+                    href={`/careers/${careerCode}`} // Use a regular anchor tag for full reload
+                    className="text-teal-400 hover:underline w-full text-left"
+                  >
+                    {career.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </ul>
+    </div>
+  ) : (
+    <p className="text-teal-400 text-center">No related careers available.</p>
+  )}
+
+  {exploreMore?.industries?.industry?.length > 0 ? (
+    <div className="bg-gray-700 p-3 text-sm rounded-lg">
+      <h2 className="font-bold text-lg text-teal-400 mb-4 text-center">
+        Related Industries
+      </h2>
+      {exploreMore.industries.industry.map((industry, index) => {
+        const industryName = encodeURIComponent(
+          industry.title.replace(/\s+/g, "-").toLowerCase()
+        ); // Format industry title for URL
+        return (
+          <div key={index} className="mb-4">
+            <a
+              
+              onClick={() =>
+                navigate(`/careers/browse/${industryName}`, {
+                  state: { industryCode: industry.code },
+                })
+              }// Use a regular anchor tag for full reload
+              className="block cursor-pointer text-teal-400 hover:underline text-center w-full"
+            >
+              {industry.title}
+            </a>
+            <p className="text-gray-300 text-sm text-center mt-2">
+              <span className="font-bold">Percent Employed:</span> {industry["$"].percent_employed}%
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  ) : (
+    <p className="text-teal-400 text-center">No related industries available.</p>
+  )}
+</div>
+
+
 
                 <div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
                   <h1 className="uppercase font-bold text-2xl text-teal-400 text-center mb-4">
