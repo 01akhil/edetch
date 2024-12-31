@@ -7,6 +7,7 @@ import HeadingWithTypingEffect from '../components/HeadingWithTypingEffect';
 import { Moon } from 'lucide-react';
 import { Sun } from 'lucide-react';
 import { Plus } from 'lucide-react';
+import SideBar from '../components/SideBar';
 
 const Bot = () => {
   const [messages, setMessages] = useState([]);
@@ -57,37 +58,7 @@ const Bot = () => {
     >
       <div className="flex w-full">
         {/* Sidebar */}
-        <div
-          className={`w-1/5 h-screen text-white ${isDarkTheme ? 'bg-[#1a1a1a]' : 'bg-[#ffffff]'} flex flex-col`}
-          style={{ fontFamily: 'Futura Now Headline' }}
-        >
-          <div className="p-4 border-b border-gray-700 flex justify-between items-center">
-            <h2 className="text-md font-semibold">Chats</h2>
-            <Plus />
-          </div>
-          <div className="flex-1 overflow-y-auto space-y-1">
-            {conversations.map((conversation, index) => (
-              <div
-                key={index}
-                onClick={() => switchConversation(index)}
-                className={`p-3 ml-2 mr-2 text-md rounded-lg cursor-pointer hover:bg-[#202120] ${
-                  index === activeConversation ? 'bg-[#202120]' : ''
-                }`}
-              >
-                {conversation}
-              </div>
-            ))}
-          </div>
-
-          <div>
-          <button
-        onClick={toggleTheme}
-        className="fixed bottom-4 right-4 p-2 bg-gray-800 text-white rounded-full"
-      >
-        {isDarkTheme ? <Sun/> : <Moon/>}
-      </button>
-          </div>
-        </div>
+       <SideBar/>
 
         {/* Main Section */}
         <div className="w-4/5 flex flex-col items-center">
