@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Question from '../components/Question';
 import SubmitButton from '../components/SubmitButton';
+import Header from '../components/Header';
 
 
 
@@ -124,10 +125,11 @@ const Test = () => {
   };
 
   return (
-    <div className="bg-[#1a1a1a] w-[100vw] h-[100vh] flex flex-col items-center justify-center">
+    <div>
   
-    
-        <div className="fixed">
+    <Header className="fixed top-0"/>
+       <div className='bg-[#FFFFFF] flex flex-col items-center justify-center w-[100vw] h-[92vh] text-black'>
+       <div className="fixed">
           <Question
             question={questions[currentQuestionIndex]}
             answerOptions={answerOptions}
@@ -147,6 +149,7 @@ const Test = () => {
       {error && <p className="mt-4 text-red-500">{error}</p>}
 
      
+       </div>
 
       
     </div>
