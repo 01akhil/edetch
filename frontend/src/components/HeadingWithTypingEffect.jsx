@@ -17,9 +17,7 @@ const HeadingWithTypingEffect = ({ text, className }) => {
   }, [text]);
 
   return <h1
-  style={{
-    fontFamily: 'Futura Now Headline',
-  }}
+  
   className={className}>{typedText}</h1>;
 };
 
