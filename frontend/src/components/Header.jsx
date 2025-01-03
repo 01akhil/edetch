@@ -15,7 +15,7 @@ const Header = () => {
         <div className="flex gap-4 text-sm">
           <button
             className="font-semibold hover:text-[#2D9A54] transition"
-            onClick={() => navigate('/chat')} // Navigate to /chat when clicked
+            onClick={() => navigate('/bot')} // Navigate to /chat when clicked
           >
             Chat
           </button>
