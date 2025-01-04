@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -151,6 +152,25 @@ const ResultPage = () => {
                   />
                 )}
               </div>
+
+              <div className="bg-white rounded-xl shadow-lg p-6 ">
+        <h1 className="text-2xl font-bold mb-4">About Skills</h1>
+        {[
+          { label: "Realistic (R)", color: "#4C6FC9", text: "Realistic individuals enjoy working with their hands, tools, and machinery. They prefer practical, physical activities and excel in roles that involve building, repairing, or working outdoors. These individuals thrive in structured environments where tangible results are achieved." },
+          { label: "Investigative (I)", color: "#4CC959", text: "Investigative people are curious and analytical, often drawn to solving problems and understanding complex systems. They excel in research, data analysis, and roles that require critical thinking and intellectual exploration. These individuals thrive in environments that challenge their minds." },
+          { label: "Artistic (A)", color: "#8B4CC9", text: "Artistic individuals are creative and expressive, thriving in environments that allow for imagination and originality. They excel in roles involving design, writing, music, or performance, where unconventional thinking and artistic freedom are valued." },
+          { label: "Social (S)", color: "#C94C79", text: "Social individuals enjoy helping others and are often empathetic and communicative. They excel in roles like teaching, counseling, or healthcare, where they can foster connections and contribute to personal or community well-being." },
+          { label: "Enterprising (E)", color: "#4CC9C9", text: "Enterprising individuals are persuasive and ambitious, thriving in leadership and decision-making roles. They excel in fields like business, sales, or law, where influencing others, taking risks, and managing projects are key." },
+          { label: "Conventional (C)", color: "#F9BC5F", text: "Conventional individuals are organized and detail-oriented, preferring structured environments with clear procedures. They excel in administrative, accounting, or clerical roles, where efficiency and accuracy are essential." },
+         
+          // Add other skill descriptions here...
+        ].map((skill, idx) => (
+          <div key={idx} className="mb-4">
+            <h3 className={`text-lg font-semibold text-[${skill.color}]`}>{skill.label}</h3>
+            <p className="text-gray-700">{skill.text}</p>
+          </div>
+        ))}
+      </div>
             </div>
           </div>
         </>
