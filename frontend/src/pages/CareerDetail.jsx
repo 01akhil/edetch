@@ -220,9 +220,7 @@ const CareerDetail = () => {
 
           <div
             className="w-full h-screen overflow-y-scroll"
-            style={{
-              fontFamily: "Futura Now Headline",
-            }}
+            
           >
             <motion.h1
               className="text-3xl text-black mb-[4vh]  font-bold  mt-[5vh] w-full flex items-center justify-center"
