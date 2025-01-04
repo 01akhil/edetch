@@ -7,6 +7,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import SideBar from "../components/SideBar";
+import Header from "../components/Header";
+import Left from "../components/Left";
+import { BriefcaseBusiness, Compass, GraduationCap } from "lucide-react";
 const CareerDetail = () => {
   const { careerCode } = useParams();
   const [careerDetail, setCareerDetail] = useState(null);
@@ -206,27 +209,38 @@ const CareerDetail = () => {
   }, [careerCode]);
 
   return (
-    <div className="w-full h-screen overflow-hidden flex justify-center bg-[#1a1a1a]">
+    <div className="w-full h-screen overflow-hidden  justify-center  text-black">
+        <Header className="w-[100vw]"/>
       <div className="w-full flex">
-        <SideBar />
+        <Left/>
 
-        <div className="w-4/5 flex flex-col items-center">
-          <BotHeader />
+        <div className="w-[82vw] flex flex-col items-center">
+          
+        
 
           <div
-            className="w-full h-screen text-gray-200 overflow-y-scroll"
+            className="w-full h-screen overflow-y-scroll"
             style={{
               fontFamily: "Futura Now Headline",
             }}
           >
             <motion.h1
-              className="text-3xl mb-[10vh]  font-bold text-white mt-[8vh]"
+              className="text-3xl text-black mb-[4vh]  font-bold  mt-[5vh] w-full flex items-center justify-center"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               {careerDetail?.title}
             </motion.h1>
+
+            <div  className="gap-2 flex items-center justify-center mb-[11vh]">
+            {careerVideo && (
+                  <div
+                    className=""
+                    dangerouslySetInnerHTML={{ __html: careerVideo }}
+                  />
+                )}
+            </div>
 
             <div className="h-[100vh] flex flex-col gap-[15vh]">
               <motion.div
@@ -236,8 +250,8 @@ const CareerDetail = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="flex flex-col gap-10 w-[42vw]">
-                  <p className="font-bold text-xl text-teal-400 ">
+                <div className="flex flex-col gap-2">
+                  <p className="font-bold text-xl text-black ">
                     Also called as
                   </p>
 
@@ -246,12 +260,7 @@ const CareerDetail = () => {
                     : "N/A"}
                 </div>
 
-                {careerVideo && (
-                  <div
-                    className="mr-[4vh]"
-                    dangerouslySetInnerHTML={{ __html: careerVideo }}
-                  />
-                )}
+                
               </motion.div>
 
               <motion.div
@@ -262,16 +271,16 @@ const CareerDetail = () => {
                 transition={{ duration: 0.6 }}
               >
                 <div>
-                  <h1 className="font-bold text-lg text-teal-400">
+                  <h1 className="font-bold text-lg ">
                     What they do:
                   </h1>
-                  <p className="text-gray-300">{careerDetail?.what_they_do}</p>
+                  <p className="">{careerDetail?.what_they_do}</p>
                 </div>
                 <div>
-                  <h1 className="font-bold text-lg text-teal-400">
+                  <h1 className="font-bold text-lg">
                     On the job, you would:
                   </h1>
-                  <ul className="flex flex-col list-disc gap-2 pl-5 text-gray-300">
+                  <ul className="flex flex-col list-disc gap-2 pl-5">
                     {careerDetail?.on_the_job?.task?.map((task, index) => (
                       <li key={index} className="text-lg">
                         {task}
@@ -290,17 +299,17 @@ const CareerDetail = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="border border-teal-500 rounded-lg p-6 bg-gray-800 transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="font-bold text-2xl mb-4 text-teal-400 uppercase">
+                <div className="border-2 border-gray-700 rounded-lg p-6 transform transition-transform duration-300 hover:scale-95">
+                  <h1 className="font-bold text-2xl mb-4 text-[#4C6FC9] uppercase">
                     Knowledge
                   </h1>
                   {knowledge ? (
                     knowledge.map((group, index) => (
                       <div key={index} className="mb-4">
-                        <h3 className="font-bold text-lg text-gray-200">
+                        <h3 className="font-bold text-lg text-[#4C6FC9]">
                           {group.title._}
                         </h3>
-                        <ul className="list-disc pl-5 flex flex-col gap-1 text-gray-300">
+                        <ul className="list-disc pl-5 flex flex-col gap-1">
                           {Array.isArray(group.element) ? (
                             group.element.map((item, subIndex) => (
                               <li key={subIndex}>{item._}</li>
@@ -316,17 +325,17 @@ const CareerDetail = () => {
                   )}
                 </div>
 
-                <div className="border border-teal-500 rounded-lg p-6 bg-gray-800 transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="font-bold text-2xl mb-4 text-teal-400 uppercase">
+                <div className="border-2 border-gray-700 rounded-lg p-6 transform transition-transform duration-300 hover:scale-95">
+                  <h1 className="font-bold text-2xl mb-4 text-[#C94C79] uppercase">
                     Skills
                   </h1>
                   {skills ? (
                     skills.map((group, index) => (
                       <div key={index} className="mb-4">
-                        <h3 className="font-bold text-lg text-gray-200">
+                        <h3 className="font-bold text-lg text-[#C94C79]">
                           {group.title._}
                         </h3>
-                        <ul className="list-disc pl-5 flex flex-col gap-1 text-gray-300">
+                        <ul className="list-disc pl-5 flex flex-col gap-1">
                           {Array.isArray(group.element) ? (
                             group.element.map((item, subIndex) => (
                               <li key={subIndex}>{item._}</li>
@@ -342,17 +351,17 @@ const CareerDetail = () => {
                   )}
                 </div>
 
-                <div className="border border-teal-500 rounded-lg p-6 bg-gray-800 transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="font-bold text-2xl mb-4 text-teal-400 uppercase">
+                <div className="border-2 border-gray-700 rounded-lg p-6 transform transition-transform duration-300 hover:scale-95">
+                  <h1 className="font-bold text-2xl mb-4 text-[#4CC959] uppercase">
                     Abilities
                   </h1>
                   {abilities ? (
                     abilities.map((group, index) => (
                       <div key={index} className="mb-4">
-                        <h3 className="font-bold text-lg text-gray-200">
+                        <h3 className="font-bold text-lg text-[#4CC959]">
                           {group.title._}
                         </h3>
-                        <ul className="list-disc pl-5 flex flex-col gap-1 text-gray-300">
+                        <ul className="list-disc pl-5 flex flex-col gap-1">
                           {Array.isArray(group.element) ? (
                             group.element.map((item, subIndex) => (
                               <li key={subIndex}>{item._}</li>
@@ -378,27 +387,27 @@ const CareerDetail = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="border border-teal-500 rounded-lg p-6 bg-gray-800 transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="font-bold text-2xl mb-4 text-teal-400 uppercase">
+                <div className="border-2 border-gray-700 rounded-lg p-6  transform transition-transform duration-300 hover:scale-95">
+                  <h1 className="font-bold text-2xl mb-4 text-[#8B4CC9] uppercase">
                     Personality
                   </h1>
                   {personality ? (
                     <>
-                      <p className="text-gray-300">
+                      <p className="">
                         {personality.top_interest.description}
                       </p>
-                      <p className="mt-4 text-gray-300">
+                      <p className="mt-4">
                         They do well at jobs that need:
                       </p>
                       <div className="grid grid-cols-2 mt-4">
-                        <ul className="flex flex-col list-disc gap-2 text-gray-300">
+                        <ul className="flex flex-col list-disc gap-2 text-[#8B4CC9]">
                           {personality.work_styles?.element
                             .slice(0, 3)
                             .map((item, index) => (
                               <li key={index}>{item._}</li>
                             ))}
                         </ul>
-                        <ul className="flex flex-col list-disc gap-2 text-gray-300">
+                        <ul className="flex flex-col list-disc gap-2 text-[#8B4CC9]">
                           {personality.work_styles?.element
                             .slice(3)
                             .map((item, index) => (
@@ -412,21 +421,21 @@ const CareerDetail = () => {
                   )}
                 </div>
 
-                <div className="border border-teal-500 rounded-lg p-6 bg-gray-800 transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="uppercase font-bold text-2xl mb-4 text-teal-400">
+                <div className="border-2 border-gray-700 rounded-lg p-6  transform transition-transform duration-300 hover:scale-95">
+                  <h1 className="uppercase font-bold text-2xl mb-4 text-[#C6C94C]">
                     Technology
                   </h1>
-                  <p className="text-gray-300">
+                  <p className="">
                     You might use software like this on the job:
                   </p>
                   {technology ? (
                     <div className="flex flex-col gap-4 mt-4">
                       {technology.category.map((cat, index) => (
                         <div key={index}>
-                          <h3 className="font-bold text-lg text-gray-200">
+                          <h3 className="font-bold text-lg text-[#C6C94C]">
                             {cat.title}
                           </h3>
-                          <ul className="list-disc pl-5 flex flex-col gap-1 text-gray-300">
+                          <ul className="list-disc pl-5 flex flex-col gap-1">
                             {Array.isArray(cat.example) ? (
                               cat.example.map((item, idx) => (
                                 <li key={idx}>{item._ || item}</li> 
@@ -453,8 +462,9 @@ const CareerDetail = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
-                  <h1 className="uppercase font-bold text-2xl text-teal-400 text-center mb-4">
+                <div className="border-2 border-gray-700 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg text-black">
+                  <h1 className="uppercase font-bold text-2xl text-[#8B4CC9] flex items-center justify-center flex-col text-center mb-4 ">
+                  <BriefcaseBusiness size={80} className="  "/>
                     Job Outlook
                   </h1>
 
@@ -462,14 +472,14 @@ const CareerDetail = () => {
                     <>
                     
                       <div className="mb-6">
-                        <p className="text-gray-300">
-                          <span className="font-bold text-teal-400">
+                        <p className="">
+                          <span className="font-bold text-[#8B4CC9]">
                             Description:
                           </span>{" "}
                           {jobOutlook.outlook.description}
                         </p>
                         <p className="text-gray-300 mt-2">
-                          <span className="font-bold text-teal-400">
+                          <span className="font-bold text-[#8B4CC9]">
                             Category:
                           </span>{" "}
                           {jobOutlook?.outlook?.category}
@@ -478,14 +488,14 @@ const CareerDetail = () => {
 
                    
                       <div className="mb-6">
-                        <p className="text-gray-300">
-                          <span className="font-bold text-teal-400">
+                        <p className="">
+                          <span className="font-bold text-[#8B4CC9]">
                             Bright Outlook:
                           </span>{" "}
                           {jobOutlook?.bright_outlook?.description}
                         </p>
-                        <p className="text-gray-300 mt-2">
-                          <span className="font-bold text-teal-400">
+                        <p className="mt-2">
+                          <span className="font-bold text-[#8B4CC9]">
                             Category:
                           </span>{" "}
                           {jobOutlook?.bright_outlook?.category}
@@ -494,38 +504,38 @@ const CareerDetail = () => {
 
                      
                       <div className="mb-6">
-                        <p className="text-gray-300">
-                          <span className="font-bold text-teal-400">
+                        <p className="">
+                          <span className="font-bold text-[#8B4CC9]">
                             Annual Salary 10th Percentile:
                           </span>{" "}
                           ${jobOutlook.salary.annual_10th_percentile}
                         </p>
-                        <p className="text-gray-300 mt-2">
-                          <span className="font-bold text-teal-400">
+                        <p className=" mt-2">
+                          <span className="font-bold text-[#8B4CC9]">
                             Annual Median Salary:
                           </span>{" "}
                           ${jobOutlook.salary.annual_median}
                         </p>
-                        <p className="text-gray-300 mt-2">
-                          <span className="font-bold text-teal-400">
+                        <p className=" mt-2">
+                          <span className="font-bold text-[#8B4CC9]">
                             Annual Salary 90th Percentile:
                           </span>{" "}
                           ${jobOutlook.salary.annual_90th_percentile}
                         </p>
-                        <p className="text-gray-300 mt-2">
-                          <span className="font-bold text-teal-400">
+                        <p className=" mt-2">
+                          <span className="font-bold text-[#8B4CC9]">
                             Hourly Salary 10th Percentile:
                           </span>{" "}
                           ${jobOutlook.salary.hourly_10th_percentile}
                         </p>
-                        <p className="text-gray-300 mt-2">
-                          <span className="font-bold text-teal-400">
+                        <p className="mt-2">
+                          <span className="font-bold text-[#8B4CC9]">
                             Hourly Median Salary:
                           </span>{" "}
                           ${jobOutlook.salary.hourly_median}
                         </p>
-                        <p className="text-gray-300 mt-2">
-                          <span className="font-bold text-teal-400">
+                        <p className="mt-2">
+                          <span className="font-bold text-[#8B4CC9]">
                             Hourly Salary 90th Percentile:
                           </span>{" "}
                           ${jobOutlook.salary.hourly_90th_percentile}
@@ -631,8 +641,9 @@ const CareerDetail = () => {
 
 
 
-<div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
-  <h1 className="uppercase font-bold text-2xl text-teal-400 text-center mb-4">
+<div className="border-2 border-gray-700  p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
+  <h1 className="uppercase font-bold text-2xl text-[#C94C79] flex flex-col items-center justify-center text-center mb-4">
+  <Compass size={80}/>
     Explore More
   </h1>
 
@@ -640,17 +651,18 @@ const CareerDetail = () => {
     <div className="mb-6">
       <ul className="space-y-2">
         <div className="mb-6">
-          <h2 className="font-bold text-lg text-teal-400 mb-4 text-center">
+          <h2 className="font-bold text-lg text-black mb-4 text-center flex items-center justify-center flex-col">
+            
             Related Careers
           </h2>
-          <ul className="space-y-2">
+          <ul className="">
             {exploreMore.careers.career.map((career, index) => {
               const careerCode = career.code;
               return (
-                <li key={index} className="bg-gray-700 p-3 rounded-lg text-sm">
+                <li key={index} className=" p-3 rounded-lg text-sm">
                   <a
                     href={`/careers/${careerCode}`} // Use a regular anchor tag for full reload
-                    className="text-teal-400 hover:underline w-full text-left"
+                    className="text-[#1684D4] hover:underline w-full text-left"
                   >
                     {career.title}
                   </a>
@@ -662,12 +674,12 @@ const CareerDetail = () => {
       </ul>
     </div>
   ) : (
-    <p className="text-teal-400 text-center">No related careers available.</p>
+    <p className="text-[#1684D4] text-center">No related careers available.</p>
   )}
 
   {exploreMore?.industries?.industry?.length > 0 ? (
-    <div className="bg-gray-700 p-3 text-sm rounded-lg">
-      <h2 className="font-bold text-lg text-teal-400 mb-4 text-center">
+    <div className=" p-3 text-sm rounded-lg">
+      <h2 className="font-bold text-lg text-[#1684D4] hover:underline mb-4 text-center">
         Related Industries
       </h2>
       {exploreMore.industries.industry.map((industry, index) => {
@@ -701,15 +713,16 @@ const CareerDetail = () => {
 
 
 
-                <div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
-                  <h1 className="uppercase font-bold text-2xl text-teal-400 text-center mb-4">
+                <div className="border-2 border-gray-700 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
+                  <h1 className="uppercase font-bold text-2xl text-[#4CC9C9] text-center mb-4 flex flex-col items-center justify-center">
+                  <GraduationCap size={80}/>
                     Education
                   </h1>
 
                   {/* Education Section */}
                   {education && (
                     <div className="mb-6">
-                      <p className="text-gray-300">
+                      <p className="text-red-400">
                         <span className="font-bold text-teal-400">
                           Education Needed:
                         </span>
@@ -733,7 +746,7 @@ const CareerDetail = () => {
                           </span>
                         )}
                       </p>
-                      <p className="text-gray-300 mt-2">
+                      <p className="text-black mt-2">
                         <span className="font-bold text-teal-400">
                           Job Zone:
                         </span>{" "}
@@ -745,16 +758,16 @@ const CareerDetail = () => {
                         </span>
                       </p>
 
-                      <div className="flex flex-col gap-3 mt-2">
-                        <div className="hover:bg-gray-900 h-[6vh] w-full border-2 rounded-lg flex items-center justify-center cursor-pointer">
+                      <div className="flex flex-col gap-3 mt-2 text-black font-semibold">
+                        <div className="hover:bg-gray-400 h-[6vh] w-full border-2 rounded-lg flex items-center justify-center cursor-pointer">
                           Find Certification
                         </div>
 
-                        <div className="hover:bg-gray-900 h-[6vh] w-full border-2 rounded-lg flex items-center justify-center cursor-pointer">
+                        <div className="hover:bg-gray-400 h-[6vh] w-full border-2 rounded-lg flex items-center justify-center cursor-pointer">
                           Find Licenses
                         </div>
 
-                        <div className="h-[6vh] w-full border-2 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-900">
+                        <div className="h-[6vh] w-full border-2 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-400">
                           Apprenticeship.gov
                         </div>
                       </div>
@@ -783,7 +796,7 @@ const CareerDetail = () => {
 
             {/* salary card */}
 
-            <div className="flex items-center justify-center h-[100vh]">
+            <div className="flex items-center justify-center h-[100vh] text-black">
               <motion.div
                 className=""
                 initial={{ opacity: 0, y: 50 }}
@@ -791,23 +804,23 @@ const CareerDetail = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300  shadow-lg flex flex-col w-[70vw]">
+                <div className="border-2 border-gray-700 p-6 rounded-lg transform transition-transform duration-300  shadow-lg flex flex-col w-[70vw]">
                   <div>
-                    <h1 className="uppercase font-bold text-2xl text-teal-400 text-center mb-4">
+                    <h1 className="uppercase font-bold text-2xl text-center mb-4">
                       Salary Statistics
                     </h1>
                   </div>
 
                   <div className="grid grid-cols-2 gap-10">
                     {/* Annual Salary Section */}
-                    <div className="w-full bg-gray-700 p-4 rounded-lg hover:scale-95 transform transition-transform duration-300">
-                      <h2 className="font-bold text-lg text-teal-400 mb-4 text-center">
+                    <div className="w-full bg-gray-300 p-4 rounded-lg shadow-xl hover:scale-95 transform transition-transform duration-300">
+                      <h2 className="font-bold text-lg text-black mb-4 text-center">
                         Annual Salary
                       </h2>
                       <div className="relative w-full h-40">
                         {/* 10th Percentile Bar */}
                         <div
-                          className="absolute bg-teal-500 text-xs text-center text-gray-900"
+                          className="absolute bg-red-400 text-xs text-center text-gray-900"
                           style={{
                             bottom: 0,
                             height: `${
@@ -823,7 +836,7 @@ const CareerDetail = () => {
                         </div>
                         {/* Median Bar */}
                         <div
-                          className="absolute bg-teal-400 text-xs text-center text-gray-900"
+                          className="absolute bg-teal-300 text-xs text-center text-gray-900"
                           style={{
                             bottom: 0,
                             height: `${
@@ -839,7 +852,7 @@ const CareerDetail = () => {
                         </div>
                         {/* 90th Percentile Bar */}
                         <div
-                          className="absolute bg-teal-300 text-xs text-center text-gray-900"
+                          className="absolute bg-teal-400 text-xs text-center text-gray-900"
                           style={{
                             bottom: 0,
                             height: "100%", // Full height as this is the highest value
@@ -850,7 +863,7 @@ const CareerDetail = () => {
                           ${jobOutlook?.salary?.annual_90th_percentile}
                         </div>
                       </div>
-                      <div className="flex justify-between mt-4 text-gray-300 text-sm">
+                      <div className="flex justify-between mt-4 text-black text-sm">
                         <span>10th Percentile</span>
                         <span>Median</span>
                         <span>90th Percentile</span>
@@ -858,14 +871,14 @@ const CareerDetail = () => {
                     </div>
 
                     {/* Hourly Salary Section */}
-                    <div className="w-full bg-gray-700 p-4 rounded-lg hover:scale-95 transform transition-transform duration-300">
-                      <h2 className="font-bold text-lg text-teal-400 mb-4 text-center">
+                    <div className="w-full bg-gray-300 p-4 rounded-lg hover:scale-95 transform transition-transform duration-300">
+                      <h2 className="font-bold text-lg text-black mb-4 text-center">
                         Hourly Salary
                       </h2>
                       <div className="relative w-full h-40">
                         {/* 10th Percentile Bar */}
                         <div
-                          className="absolute bg-teal-500 text-xs text-center text-gray-900"
+                          className="absolute bg-red-400 text-xs text-center text-gray-900"
                           style={{
                             bottom: 0,
                             height: `${
@@ -881,7 +894,7 @@ const CareerDetail = () => {
                         </div>
                         {/* Median Bar */}
                         <div
-                          className="absolute bg-teal-400 text-xs text-center text-gray-900"
+                          className="absolute bg-teal-300 text-xs text-center text-gray-900"
                           style={{
                             bottom: 0,
                             height: `${
@@ -897,7 +910,7 @@ const CareerDetail = () => {
                         </div>
                         {/* 90th Percentile Bar */}
                         <div
-                          className="absolute bg-teal-300 text-xs text-center text-gray-900"
+                          className="absolute bg-teal-500 text-xs text-center text-gray-900"
                           style={{
                             bottom: 0,
                             height: "100%", // Full height as this is the highest value
@@ -908,7 +921,7 @@ const CareerDetail = () => {
                           ${jobOutlook?.salary?.hourly_90th_percentile}
                         </div>
                       </div>
-                      <div className="flex justify-between mt-4 text-gray-300 text-sm">
+                      <div className="flex justify-between mt-4 text-black text-sm">
                         <span>10th Percentile</span>
                         <span>Median</span>
                         <span>90th Percentile</span>
