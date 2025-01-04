@@ -10,10 +10,12 @@ import SideBar from "../components/SideBar";
 import Header from "../components/Header";
 import Left from "../components/Left";
 import { BriefcaseBusiness, Compass, GraduationCap } from "lucide-react";
+import Loader from "../components/Loader";
 const CareerDetail = () => {
   const { careerCode } = useParams();
   const [careerDetail, setCareerDetail] = useState(null);
   const navigate = useNavigate();
+  const[loading,setLoading]=useState(false);
 
   const [isSliding, setIsSliding] = useState(false);
 
@@ -28,6 +30,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchCareerDetails = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/careers/${careerCode}`
         );
@@ -35,6 +38,9 @@ const CareerDetail = () => {
         setCareerDetail(response.data.career);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -46,6 +52,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchEducationDetails = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/careers/${careerCode}/knowledge`
         );
@@ -53,6 +60,9 @@ const CareerDetail = () => {
         setKnowledge(response.data.knowledge.group);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -64,6 +74,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/careers/${careerCode}/skills`
         );
@@ -71,6 +82,9 @@ const CareerDetail = () => {
         setSkills(response.data.skills.group);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -82,6 +96,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchAbilities = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/careers/${careerCode}/abilities`
         );
@@ -89,6 +104,9 @@ const CareerDetail = () => {
         setAbilities(response.data.abilities.group);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -100,6 +118,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchPersonality = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${
             import.meta.env.VITE_API_URL
@@ -109,6 +128,9 @@ const CareerDetail = () => {
         setPersonality(response.data.personality);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -120,6 +142,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchTechnology = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/careers/${careerCode}/technology`
         );
@@ -127,6 +150,9 @@ const CareerDetail = () => {
         setTechnology(response.data.technology);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -138,6 +164,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchJobOutlook = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${
             import.meta.env.VITE_API_URL
@@ -147,6 +174,9 @@ const CareerDetail = () => {
         setJobOutlook(response.data.job_outlook);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -158,6 +188,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchExploreMore = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${
             import.meta.env.VITE_API_URL
@@ -168,6 +199,10 @@ const CareerDetail = () => {
       } catch (err) {
         console.log(err);
       }
+      finally {
+        setLoading(false); // Stop loading
+      }
+
     };
 
     fetchExploreMore();
@@ -177,6 +212,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchCareerVideo = async () => {
       try {
+        setLoading(true);
         console.log(careerCode);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/careerVideos/${careerCode}`
@@ -185,6 +221,9 @@ const CareerDetail = () => {
         setCareerVideo(response.data.youtubeVideoPage);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
     fetchCareerVideo();
@@ -195,6 +234,7 @@ const CareerDetail = () => {
   useEffect(() => {
     const fetchEducation = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/careers/${careerCode}/education`
         );
@@ -202,6 +242,9 @@ const CareerDetail = () => {
         setEducation(response.data.education);
       } catch (err) {
         console.log(err);
+      }
+      finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -216,9 +259,7 @@ const CareerDetail = () => {
 
         <div className="w-[82vw] flex flex-col items-center">
           
-        
-
-          <div
+          {loading ? (<Loader/>) : <div
             className="w-full h-screen overflow-y-scroll"
             
           >
@@ -546,98 +587,6 @@ const CareerDetail = () => {
                 </div>
 
 
-                {/* <div className="border-2 border-gray-700 bg-gray-800 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
-                  <h1 className="uppercase font-bold text-2xl text-teal-400 text-center mb-4">
-                    Explore More
-                  </h1>
-
-                
-                  {exploreMore?.careers?.career?.length > 0 ? (
-                    <div className="mb-6">
-                      <ul className="space-y-2">
-                        {exploreMore?.careers?.career?.length > 0 ? (
-                          <div className="mb-6">
-                            <h2 className="font-bold text-lg text-teal-400 mb-4 text-center">
-                              Related Careers
-                            </h2>
-                            <ul className="space-y-2">
-                              {exploreMore.careers.career.map(
-                                (career, index) => {
-                                  const careerCode = career.code; 
-                                  return (
-                                    <li
-                                      key={index}
-                                      className="bg-gray-700 p-3 rounded-lg text-sm"
-                                    >
-                                      <button
-                                        onClick={() =>
-                                          navigate(`/careers/${careerCode}`)
-                                        } // Navigate on click
-                                        className="text-teal-400 hover:underline w-full text-left"
-                                      >
-                                        {career.title}
-                                      </button>
-                                    </li>
-                                  );
-                                }
-                              )}
-                            </ul>
-                          </div>
-                        ) : (
-                          <p className="text-teal-400 text-center">
-                            No related careers available.
-                          </p>
-                        )}
-                      </ul>
-                    </div>
-                  ) : (
-                    <p className="text-teal-400 text-center">
-                      No related careers available.
-                    </p>
-                  )}
-
-               
-                  {exploreMore?.industries?.industry?.length > 0 ? (
-                    <div className="bg-gray-700 p-3 text-sm rounded-lg">
-                      <h2 className="font-bold text-lg text-teal-400 mb-4 text-center">
-                        Related Industries
-                      </h2>
-                      {exploreMore.industries.industry.map(
-                        (industry, index) => {
-                          const industryName = encodeURIComponent(
-                            industry.title.replace(/\s+/g, "-").toLowerCase()
-                          ); // Format industry title for URL
-                          return (
-                            <div key={index} className="mb-4">
-                              <button
-                                onClick={() =>
-                                  navigate(`/careers/browse/${industryName}`, {
-                                    state: { industryCode: industry.code },
-                                  })
-                                }
-                                className="block text-teal-400 hover:underline text-center w-full"
-                              >
-                                {industry.title}
-                              </button>
-                              <p className="text-gray-300 text-sm text-center mt-2">
-                                <span className="font-bold">
-                                  Percent Employed:
-                                </span>{" "}
-                                {industry["$"].percent_employed}%
-                              </p>
-                            </div>
-                          );
-                        }
-                      )}
-                    </div>
-                  ) : (
-                    <p className="text-teal-400 text-center">
-                      No related industries available.
-                    </p>
-                  )}
-                </div> */}
-
-
 
 <div className="border-2 border-gray-700  p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
   <h1 className="uppercase font-bold text-2xl text-[#C94C79] flex flex-col items-center justify-center text-center mb-4">
@@ -929,7 +878,10 @@ const CareerDetail = () => {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </div>}
+        
+
+          
         </div>
       </div>
     </div>
