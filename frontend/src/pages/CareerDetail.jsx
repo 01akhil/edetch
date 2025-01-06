@@ -10,6 +10,7 @@ import Left from "../components/Left";
 import { BriefcaseBusiness, Compass, GraduationCap } from "lucide-react";
 import Loader from "../components/Loader";
 import { Footer } from "../components/Footer";
+import { Bar } from 'react-chartjs-2';
 const CareerDetail = () => {
   const { careerCode } = useParams();
   const [careerDetail, setCareerDetail] = useState(null);
@@ -257,6 +258,34 @@ const CareerDetail = () => {
     fetchEducation();
   }, [careerCode]);
 
+  const chartData = jobOutlook?.salary
+    ? {
+        labels: ['10th Percentile', 'Median', '90th Percentile'],
+        datasets: [
+          {
+            label: 'Annual Salary',
+            data: [
+              jobOutlook.salary.annual_10th_percentile,
+              jobOutlook.salary.annual_median,
+              jobOutlook.salary.annual_90th_percentile,
+            ],
+            backgroundColor: ['#F87171', '#4CC9C9', '#34D399'], // Custom colors
+            borderWidth: 1,
+          },
+          {
+            label: 'Hourly Salary',
+            data: [
+              jobOutlook.salary.hourly_10th_percentile,
+              jobOutlook.salary.hourly_median,
+              jobOutlook.salary.hourly_90th_percentile,
+            ],
+            backgroundColor: ['#FBBF24', '#60A5FA', '#A78BFA'], // Custom colors
+            borderWidth: 1,
+          },
+        ],
+      }
+    : null;
+
   return (
     <div className="w-full h-screen overflow-hidden  justify-center  text-black">
         <Header className="w-[100vw]"/>
@@ -282,7 +311,7 @@ const CareerDetail = () => {
 <div className="w-full h-[90vh] ">
 
 <div  className="flex items-center justify-center w-[79.75vw]">
-             {careerVideo && ( 
+             {/* {careerVideo && ( 
                <div className="w-[489px] h-[276px] rounded-2xl overflow-hidden  mb-[5vh]">
                <iframe 
                 
@@ -296,7 +325,20 @@ const CareerDetail = () => {
                </iframe>
              </div>
              
-                 )} 
+                 )}  */}
+
+<div className="w-[489px] h-[276px] rounded-2xl overflow-hidden  mb-[5vh]">
+               <iframe 
+                
+                 src="https://www.youtube.com/embed/aK2PVtgWLp8?rel=0&autoplay=1&mute=1"  
+                 title="YouTube video player" 
+                 frameborder="0" 
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                 allowfullscreen
+                 className="w-full h-full"
+               >
+               </iframe>
+             </div>
             </div>
 
            <div className="w-full h-[90vh] flex gap-2 pl-9 pr-9">
@@ -527,7 +569,7 @@ const CareerDetail = () => {
                     <div className="flex flex-col gap-4 mt-4">
                       {technology.category.map((cat, index) => (
                         <div key={index} className="">
-                          <h3 className="font-bold text-base text-[#F9BC5F]">
+                          <h3 className="font-bold text-sm text-[#F9BC5F]">
                             {cat.title}
                           </h3>
                           <ul className="list-disc pl-9 flex flex-col gap-1 text-sm leading-tight">
@@ -840,144 +882,47 @@ const CareerDetail = () => {
             </div>
 
             {/* salary card */}
+{/* 
+            <div className="flex items-center justify-center h-[80vh] bg-white">
+      <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center h-[60vh] w-[50%]">
+        <h2 className="text-md font-semibold mb-4 text-gray-700">Salary Statistics</h2>
+        {chartData && (
+          <Bar
+            data={chartData}
+            options={{
+              plugins: {
+                legend: { display: true, position: 'top' },
+              },
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Amount ($)',
+                    color: '#374151',
+                  },
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Salary Percentiles',
+                    color: '#374151',
+                  },
+                },
+              },
+            }}
+          />
+        )}
+      </div>
+    </div>
 
-            <div className="flex items-center justify-center h-[100vh] text-black">
-              <motion.div
-                className=""
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.6 }}
-              >
-                <div className="border-2 border-[#BEBEBE] p-6 rounded-lg transform transition-transform duration-300  shadow-lg flex flex-col w-[70vw]">
-                  <div>
-                    <h1 className="uppercase font-bold text-2xl text-center mb-4">
-                      Salary Statistics
-                    </h1>
-                  </div>
+             */}
 
-                  <div className="grid grid-cols-2 gap-10">
-                    {/* Annual Salary Section */}
-                    <div className="w-full bg-gray-300 p-4 rounded-lg shadow-xl hover:scale-95 transform transition-transform duration-300">
-                      <h2 className="font-bold text-lg text-black mb-4 text-center">
-                        Annual Salary
-                      </h2>
-                      <div className="relative w-full h-40">
-                        {/* 10th Percentile Bar */}
-                        <div
-                          className="absolute bg-red-400 text-xs text-center text-gray-900"
-                          style={{
-                            bottom: 0,
-                            height: `${
-                              (jobOutlook?.salary?.annual_10th_percentile /
-                                jobOutlook?.salary?.annual_90th_percentile) *
-                              100
-                            }%`, // Dynamic height
-                            left: "5%",
-                            width: "20%", // Adjust width as needed
-                          }}
-                        >
-                          ${jobOutlook?.salary?.annual_10th_percentile}
-                        </div>
-                        {/* Median Bar */}
-                        <div
-                          className="absolute bg-teal-300 text-xs text-center text-gray-900"
-                          style={{
-                            bottom: 0,
-                            height: `${
-                              (jobOutlook?.salary?.annual_median /
-                                jobOutlook?.salary?.annual_90th_percentile) *
-                              100
-                            }%`, // Dynamic height
-                            left: "40%",
-                            width: "20%", // Adjust width as needed
-                          }}
-                        >
-                          ${jobOutlook?.salary?.annual_median}
-                        </div>
-                        {/* 90th Percentile Bar */}
-                        <div
-                          className="absolute bg-teal-400 text-xs text-center text-gray-900"
-                          style={{
-                            bottom: 0,
-                            height: "100%", // Full height as this is the highest value
-                            left: "75%",
-                            width: "20%", // Adjust width as needed
-                          }}
-                        >
-                          ${jobOutlook?.salary?.annual_90th_percentile}
-                        </div>
-                      </div>
-                      <div className="flex justify-between mt-4 text-black text-sm">
-                        <span>10th Percentile</span>
-                        <span>Median</span>
-                        <span>90th Percentile</span>
-                      </div>
-                    </div>
-
-                    {/* Hourly Salary Section */}
-                    <div className="w-full bg-gray-300 p-4 rounded-lg hover:scale-95 transform transition-transform duration-300">
-                      <h2 className="font-bold text-lg text-black mb-4 text-center">
-                        Hourly Salary
-                      </h2>
-                      <div className="relative w-full h-40">
-                        {/* 10th Percentile Bar */}
-                        <div
-                          className="absolute bg-red-400 text-xs text-center text-gray-900"
-                          style={{
-                            bottom: 0,
-                            height: `${
-                              (jobOutlook?.salary?.hourly_10th_percentile /
-                                jobOutlook?.salary?.hourly_90th_percentile) *
-                              100
-                            }%`, // Dynamic height
-                            left: "5%",
-                            width: "20%", // Adjust width as needed
-                          }}
-                        >
-                          ${jobOutlook?.salary?.hourly_10th_percentile}
-                        </div>
-                        {/* Median Bar */}
-                        <div
-                          className="absolute bg-teal-300 text-xs text-center text-gray-900"
-                          style={{
-                            bottom: 0,
-                            height: `${
-                              (jobOutlook?.salary?.hourly_median /
-                                jobOutlook?.salary?.hourly_90th_percentile) *
-                              100
-                            }%`, // Dynamic height
-                            left: "40%",
-                            width: "20%", // Adjust width as needed
-                          }}
-                        >
-                          ${jobOutlook?.salary?.hourly_median}
-                        </div>
-                        {/* 90th Percentile Bar */}
-                        <div
-                          className="absolute bg-teal-500 text-xs text-center text-gray-900"
-                          style={{
-                            bottom: 0,
-                            height: "100%", // Full height as this is the highest value
-                            left: "75%",
-                            width: "20%", // Adjust width as needed
-                          }}
-                        >
-                          ${jobOutlook?.salary?.hourly_90th_percentile}
-                        </div>
-                      </div>
-                      <div className="flex justify-between mt-4 text-black text-sm">
-                        <span>10th Percentile</span>
-                        <span>Median</span>
-                        <span>90th Percentile</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            
+             <div className="h-[40vh] w-full flex items-center justify-center">
+<Footer/>
+             </div>
           </div>}
         
 
