@@ -6,7 +6,7 @@ import { CircleHelp } from 'lucide-react';
 
 const Left = () => {
   return (
-    <div className='h-[92vh] w-[18vw] bg-[#F2F3F5] flex flex-col items-center py-4'>
+    <div className='h-[92vh] w-[20.25vw] bg-[#F2F3F5] flex flex-col items-center py-4'>
       <div className='flex flex-col gap-6 font-semibold mt-8 text-sm'>
         <button className='flex items-center justify-center bg-[#EBEDEF] w-[15vw] h-[6vh] gap-2 rounded-lg hover:bg-[#D1D7DB] transition'>
           <Plus className='w-[1.5vw] cursor-pointer hover:text-[#2D9A54] transition' />
