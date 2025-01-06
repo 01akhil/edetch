@@ -287,7 +287,7 @@ const CareerDetail = () => {
     : null;
 
   return (
-    <div className="w-full h-screen overflow-hidden  justify-center  text-black">
+    <div className="w-full max-h-screen overflow-hidden  justify-center  text-black">
         <Header className="w-[100vw]"/>
       <div className="w-full flex">
         <Left/>
@@ -308,11 +308,11 @@ const CareerDetail = () => {
               {careerDetail?.title}
             </motion.h1>
 
-<div className="w-full h-[90vh] ">
+<div className="w-full ">
 
 <div  className="flex items-center justify-center w-[79.75vw]">
-             {/* {careerVideo && ( 
-               <div className="w-[489px] h-[276px] rounded-2xl overflow-hidden  mb-[5vh]">
+             {careerVideo && ( 
+               <div className="w-[489px] h-[276px] rounded-2xl overflow-hidden  mb-[3.5vh]">
                <iframe 
                 
                  src="https://www.youtube.com/embed/aK2PVtgWLp8?rel=0&autoplay=1&mute=1"  
@@ -325,9 +325,9 @@ const CareerDetail = () => {
                </iframe>
              </div>
              
-                 )}  */}
+                 )} 
 
-<div className="w-[489px] h-[275px] rounded-2xl overflow-hidden  mb-[5vh]">
+{/* <div className="w-[489px] h-[275px] rounded-2xl overflow-hidden  mb-[3.5vh]">
                <iframe 
                 
                  src="https://www.youtube.com/embed/aK2PVtgWLp8?rel=0&autoplay=1&mute=1"  
@@ -338,11 +338,11 @@ const CareerDetail = () => {
                  className="w-full h-full"
                >
                </iframe>
-             </div>
+             </div> */}
             </div>
 
-           <div className="w-full h-[90vh] flex gap-2 pl-9 pr-9">
-           <div className="w-[65%] h-full flex flex-col">
+           <div className="w-full flex gap-2 pl-9 pr-9">
+           <div className="w-[65%]  flex flex-col">
             
               <h1 className="font-bold text-[22px] leading-[16px]">1. Career Overview</h1>
 
@@ -424,7 +424,7 @@ const CareerDetail = () => {
 
            
 
-            <div className="h-[100vh] ">
+            <div className="max-h-[100vh] mt-1">
               <motion.div
                 className="grid grid-cols-3 gap-2 p-8"
                 initial={{ opacity: 0, y: 50 }}
@@ -516,9 +516,9 @@ const CareerDetail = () => {
               </motion.div>
             </div>
 
-            <div className="h-[80vh]">
+            <div className="max-h-[80vh] -mt-1">
               <motion.div
-                className="grid grid-cols-2 gap-4 p-8"
+                className="grid grid-cols-2 gap-4 pl-8 pr-8 pb-8 "
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -591,7 +591,7 @@ const CareerDetail = () => {
               </motion.div>
             </div>
 
-            <div className="min-h-[65vh] p-10">
+            <div className="min-h-[65vh] pl-10 pr-10">
               <motion.div
                 className="grid grid-cols-3 gap-4 text-white justify-center"
                 initial={{ opacity: 0, y: 50 }}
@@ -756,7 +756,7 @@ const CareerDetail = () => {
 
 
 
-                <div className="border-2 border-[#BEBEBE] p-6 rounded-lg transform transition-transform duration-300  shadow-lg pt-9 max-h-[100vh] hover:border-[#4CC9C9]">
+                <div className="border-2 border-[#BEBEBE] p-6 rounded-lg transform transition-transform duration-300  shadow-lg pt-9 min-h-[100vh] hover:border-[#4CC9C9]">
                   <h1 className="uppercase font-bold text-[22px] text-[#4CC9C9] text-center mb-4 flex flex-col items-center justify-center ">
                   <GraduationCap size={58} pb-3/>
                     Education
@@ -920,8 +920,8 @@ const CareerDetail = () => {
 
              */}
 
-             <div className="h-[40vh] w-full flex items-center justify-center">
-<Footer/>
+             <div className="h-[29vh] w-full flex items-center justify-center mb-3">
+<Footer className=""/>
              </div>
           </div>}
         
