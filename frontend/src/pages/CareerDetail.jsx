@@ -311,7 +311,7 @@ const CareerDetail = () => {
 <div className="w-full ">
 
 <div  className="flex items-center justify-center w-[79.75vw]">
-             {careerVideo && ( 
+             {/* {careerVideo && ( 
                <div className="w-[489px] h-[276px] rounded-2xl overflow-hidden  mb-[3.5vh]">
                <iframe 
                 
@@ -325,9 +325,9 @@ const CareerDetail = () => {
                </iframe>
              </div>
              
-                 )} 
+                 )}  */}
 
-{/* <div className="w-[489px] h-[275px] rounded-2xl overflow-hidden  mb-[3.5vh]">
+<div className="w-[489px] h-[275px] rounded-2xl overflow-hidden  mb-[3.5vh]">
                <iframe 
                 
                  src="https://www.youtube.com/embed/aK2PVtgWLp8?rel=0&autoplay=1&mute=1"  
@@ -338,7 +338,7 @@ const CareerDetail = () => {
                  className="w-full h-full"
                >
                </iframe>
-             </div> */}
+             </div>
             </div>
 
            <div className="w-full flex gap-2 pl-9 pr-9">
