@@ -327,7 +327,7 @@ const CareerDetail = () => {
              
                  )}  */}
 
-<div className="w-[489px] h-[276px] rounded-2xl overflow-hidden  mb-[5vh]">
+<div className="w-[489px] h-[275px] rounded-2xl overflow-hidden  mb-[5vh]">
                <iframe 
                 
                  src="https://www.youtube.com/embed/aK2PVtgWLp8?rel=0&autoplay=1&mute=1"  
