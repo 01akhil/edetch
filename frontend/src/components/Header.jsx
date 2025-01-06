@@ -1,10 +1,19 @@
 
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown} from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
-
+import { useState } from 'react';
 const Header = () => {
   const navigate = useNavigate(); // Initialize the navigate function
+
+  const [searchItem,setSearchItem]=useState('');
+  
+    const handleKeyDown=(event)=>{
+      if(event.key==='Enter' && searchItem.trim()!==''){
+        navigate(`/search/${searchItem}`)
+      }
+    }
 
   return (
     <div className="w-full h-[8vh] bg-[#F2F3F5] flex items-center justify-between px-6 md:px-10 lg:px-16 py-4">
@@ -28,10 +37,25 @@ const Header = () => {
         </div>
       </div>
 
+         
+      <div className='w-[40vw] text-black pt-1 pb-1'>
+      
+ <input
+ type='text'
+ placeholder='Search careers here'
+ value={searchItem}
+ onChange={(e)=>setSearchItem(e.target.value)}  
+ onKeyDown={handleKeyDown}
+
+ className='w-full max-w-md p-2 border-2 rounded-lg focus:outline-none   border-[#bebebe] '>
+  
+ 
+
+ </input>
+</div>
+
       <div className="flex gap-6 items-center">
-        <h1 className="flex items-center justify-center gap-2 border border-gray-500 rounded-md px-4 py-2 h-[5vh] text-sm">
-          English <ChevronDown className="w-4 h-4" />
-        </h1>
+    
 
         <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
           <img

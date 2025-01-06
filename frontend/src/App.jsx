@@ -14,6 +14,7 @@ import CareerDetail from './pages/CareerDetail';
 import BrowseByIndustry from './pages/BrowseByIndustry';
 import ResultPage from './pages/ResultPage';
 import SearchPage from './pages/SearchPage';
+import Test2 from './pages/Test2';
 function App() {
   return (
     <Router> 
@@ -22,7 +23,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/pschometric-test" element={
               <ProtectedRoute>
-                <Test/>
+                <Test2/>
               </ProtectedRoute>
              } />
             <Route path="/explore" element={

@@ -14,7 +14,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 const ResultPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { answerString } = location.state || {};
+  const { answers } = location.state || {};
 
   const [result, setResult] = useState(null);
   const [result1, setResult1] = useState(null);
@@ -34,18 +34,18 @@ const ResultPage = () => {
   };
 
   useEffect(() => {
-    if (!answerString) return;
+    if (!answers) return;
 
     fetchResults(
-      `${import.meta.env.VITE_API_URL}/api/results?answers=${answerString}`,
+      `${import.meta.env.VITE_API_URL}/api/results?answers=${answers}`,
       setResult1
     );
 
     fetchResults(
-      `${import.meta.env.VITE_API_URL}/api/careers?answers=${answerString}`,
+      `${import.meta.env.VITE_API_URL}/api/careers?answers=${answers}`,
       setResult
     );
-  }, [answerString]);
+  }, [answers]);
 
   const careerInfo =
     result?.careers?.career?.map((career) => ({

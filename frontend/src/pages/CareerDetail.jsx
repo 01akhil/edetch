@@ -1,16 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import BotHeader from "../components/BotHeader";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import SideBar from "../components/SideBar";
 import Header from "../components/Header";
 import Left from "../components/Left";
 import { BriefcaseBusiness, Compass, GraduationCap } from "lucide-react";
 import Loader from "../components/Loader";
+import { Footer } from "../components/Footer";
 const CareerDetail = () => {
   const { careerCode } = useParams();
   const [careerDetail, setCareerDetail] = useState(null);
@@ -208,6 +207,13 @@ const CareerDetail = () => {
     fetchExploreMore();
   }, [careerCode]);
 
+  const navigationItems = [
+    "FAQ",
+    "Privacy Policy",
+    "Terms of Service",
+    "Contact Us"
+  ];
+
   const [careerVideo, setCareerVideo] = useState(null);
   useEffect(() => {
     const fetchCareerVideo = async () => {
@@ -264,7 +270,7 @@ const CareerDetail = () => {
             
           >
             <motion.h1
-              className="text-3xl text-black mb-[4vh]  font-bold  mt-[5vh] w-full flex items-center justify-center"
+              className="text-3xl text-black font-bold  mt-[5vh] w-full flex items-center justify-center"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -272,16 +278,11 @@ const CareerDetail = () => {
               {careerDetail?.title}
             </motion.h1>
 
-            <div  className="gap-2 flex items-center justify-center mb-[11vh]">
-            {careerVideo && (
-                  <div
-                    className=""
-                    dangerouslySetInnerHTML={{ __html: careerVideo }}
-                  />
-                )}
-            </div>
+<div className="w-full h-[90vh] flex gap-2 p-8">
+            <div className="w-[65%] h-full flex flex-col">
+              <img src="" alt="" className="h-[38vh] bg-gray-100 rounded-lg mb-[5vh]"/>
+              <h1 className="font-bold text-[22px] leading-[16px]">1. Career Overview</h1>
 
-            <div className="h-[100vh] flex flex-col gap-[15vh]">
               <motion.div
                 className="flex gap-1"
                 initial={{ opacity: 0, x: -50 }}
@@ -289,9 +290,9 @@ const CareerDetail = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="flex flex-col gap-2">
-                  <p className="font-bold text-xl text-black ">
-                    Also called as
+                <div className="text-[14px] mt-4 leading-2">
+                  <p className=" ">
+                    Also called as:
                   </p>
 
                   {Array.isArray(careerDetail?.also_called?.title)
@@ -302,59 +303,106 @@ const CareerDetail = () => {
                 
               </motion.div>
 
+
               <motion.div
-                className="grid grid-cols-2 mb-[5vh] gap-8"
+                className="gap-8 mt-4"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div>
-                  <h1 className="font-bold text-lg ">
-                    What they do:
+                <div className="text-[14px]">
+                  <h1 className="text-[14px]">
+                    Role in Society:
                   </h1>
                   <p className="">{careerDetail?.what_they_do}</p>
                 </div>
+
+                </motion.div>
+
+
+
+              </div>
+
+              <div className="w-[40%] h-full  flex flex-col items-start">
+              <div  className=" ">
+            {/* {careerVideo && ( */}
+               <div className="w-[427px] h-[240px] rounded-2xl overflow-hidden mr-2 mb-[5vh]">
+               <iframe 
+                
+                 src="https://www.youtube.com/embed/aK2PVtgWLp8?rel=0&autoplay=1&mute=1"  
+                 title="YouTube video player" 
+                 frameborder="0" 
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                 allowfullscreen
+                 className="w-full h-full"
+               >
+               </iframe>
+             </div>
+             
+                {/* )} */}
+            </div>
+
+
+            <motion.div
+                className="text-sm"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6 }}
+              >
+               
                 <div>
-                  <h1 className="font-bold text-lg">
-                    On the job, you would:
+                  <h1 className="font-bold text-[22px] leading-[16px]">
+                    Core Expertise:
                   </h1>
-                  <ul className="flex flex-col list-disc gap-2 pl-5">
+                  <ul className="flex flex-col list-disc gap-4 pl-5 mt-4">
                     {careerDetail?.on_the_job?.task?.map((task, index) => (
-                      <li key={index} className="text-lg">
+                      <li key={index} className="">
                         {task}
                       </li>
                     ))}
                   </ul>
                 </div>
               </motion.div>
-            </div>
 
-            <div className="h-[100vh]">
+
+
+                </div>
+</div>
+
+
+          
+
+           
+
+            <div className="h-[100vh] ">
               <motion.div
-                className="grid grid-cols-3 gap-8"
+                className="grid grid-cols-3 gap-2 p-8"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="border-2 border-gray-700 rounded-lg p-6 transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="font-bold text-2xl mb-4 text-[#4C6FC9] uppercase">
+                
+                <div className="border-2 border-[#BEBEBE] rounded-lg p-6 transform transition-all duration-300 h-[80vh] w-[24vw] hover:border-[#4C6FC9]">
+
+                  <h1 className="font-extrabold text-[20px] mb-4 text-[#4C6FC9] uppercase">
                     Knowledge
                   </h1>
                   {knowledge ? (
                     knowledge.map((group, index) => (
                       <div key={index} className="mb-4">
-                        <h3 className="font-bold text-lg text-[#4C6FC9]">
+                        <h3 className="font-bold text-base text-[#4C6FC9]">
                           {group.title._}
                         </h3>
-                        <ul className="list-disc pl-5 flex flex-col gap-1">
+                        <ul className="list-disc text-sm pl-5 flex flex-col gap-1">
                           {Array.isArray(group.element) ? (
                             group.element.map((item, subIndex) => (
-                              <li key={subIndex}>{item._}</li>
+                              <li className="capitalize" key={subIndex}>{item._}</li>
                             ))
                           ) : (
-                            <li>{group.element._}</li>
+                            <li className="capitalize">{group.element._}</li>
                           )}
                         </ul>
                       </div>
@@ -364,17 +412,17 @@ const CareerDetail = () => {
                   )}
                 </div>
 
-                <div className="border-2 border-gray-700 rounded-lg p-6 transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="font-bold text-2xl mb-4 text-[#C94C79] uppercase">
+                <div className="border-2 border-[#BEBEBE] rounded-lg p-6 transform transition-transform duration-300 h-[80vh] w-[24vw] hover:border-[#C94C79]">
+                  <h1 className="font-extrabold text-[20px] mb-4 text-[#C94C79] uppercase">
                     Skills
                   </h1>
                   {skills ? (
                     skills.map((group, index) => (
                       <div key={index} className="mb-4">
-                        <h3 className="font-bold text-lg text-[#C94C79]">
+                        <h3 className="font-bold text-base text-[#C94C79] capitalize">
                           {group.title._}
                         </h3>
-                        <ul className="list-disc pl-5 flex flex-col gap-1">
+                        <ul className="list-disc pl-5 flex flex-col gap-1 text-sm capitalize">
                           {Array.isArray(group.element) ? (
                             group.element.map((item, subIndex) => (
                               <li key={subIndex}>{item._}</li>
@@ -390,17 +438,17 @@ const CareerDetail = () => {
                   )}
                 </div>
 
-                <div className="border-2 border-gray-700 rounded-lg p-6 transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="font-bold text-2xl mb-4 text-[#4CC959] uppercase">
+                <div className="border-2 border-[#BEBEBE] rounded-lg p-6 transform transition-transform duration-300 h-[80vh] w-[24vw] hover:border-[#4CC959]">
+                  <h1 className="font-extrabold text-[20px] mb-4 text-[#4CC959] uppercase">
                     Abilities
                   </h1>
                   {abilities ? (
                     abilities.map((group, index) => (
                       <div key={index} className="mb-4">
-                        <h3 className="font-bold text-lg text-[#4CC959]">
+                        <h3 className="font-bold text-base text-[#4CC959]">
                           {group.title._}
                         </h3>
-                        <ul className="list-disc pl-5 flex flex-col gap-1">
+                        <ul className="list-disc pl-5 flex flex-col gap-1 text-sm capitalize">
                           {Array.isArray(group.element) ? (
                             group.element.map((item, subIndex) => (
                               <li key={subIndex}>{item._}</li>
@@ -418,35 +466,35 @@ const CareerDetail = () => {
               </motion.div>
             </div>
 
-            <div className="h-[100vh]">
+            <div className="h-[80vh]">
               <motion.div
-                className="grid grid-cols-2 gap-8"
+                className="grid grid-cols-2 gap-2 p-8"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="border-2 border-gray-700 rounded-lg p-6  transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="font-bold text-2xl mb-4 text-[#8B4CC9] uppercase">
+                <div className="border-2 border-[#BEBEBE] rounded-lg p-6  transform transition-transform duration-300 w-[37vw]">
+                  <h1 className="font-extrabold text-[20px] mb-4 text-[#8B4CC9] uppercase">
                     Personality
                   </h1>
                   {personality ? (
                     <>
-                      <p className="">
+                      <p className="text-sm">
                         {personality.top_interest.description}
                       </p>
-                      <p className="mt-4">
+                      <p className="mt-4 text-sm">
                         They do well at jobs that need:
                       </p>
-                      <div className="grid grid-cols-2 mt-4">
-                        <ul className="flex flex-col list-disc gap-2 text-[#8B4CC9]">
+                      <div className="mt-4">
+                        <ul className="flex flex-col list-disc text-[15px] gap-2 text-[#8B4CC9]">
                           {personality.work_styles?.element
                             .slice(0, 3)
                             .map((item, index) => (
                               <li key={index}>{item._}</li>
                             ))}
                         </ul>
-                        <ul className="flex flex-col list-disc gap-2 text-[#8B4CC9]">
+                        <ul className="flex flex-col list-disc gap-2 text-[15px] mt-1 text-[#8B4CC9]">
                           {personality.work_styles?.element
                             .slice(3)
                             .map((item, index) => (
@@ -460,21 +508,21 @@ const CareerDetail = () => {
                   )}
                 </div>
 
-                <div className="border-2 border-gray-700 rounded-lg p-6  transform transition-transform duration-300 hover:scale-95">
-                  <h1 className="uppercase font-bold text-2xl mb-4 text-[#C6C94C]">
+                <div className="border-2 border-[#BEBEBE] rounded-lg p-6  transform transition-transform duration-300 w-[37vw]">
+                  <h1 className="font-extrabold text-[20px] uppercase  text-2xl mb-4 text-[#C6C94C]">
                     Technology
                   </h1>
-                  <p className="">
+                  <p className="text-sm">
                     You might use software like this on the job:
                   </p>
                   {technology ? (
                     <div className="flex flex-col gap-4 mt-4">
                       {technology.category.map((cat, index) => (
                         <div key={index}>
-                          <h3 className="font-bold text-lg text-[#C6C94C]">
+                          <h3 className="font-bold text-base text-[#C6C94C]">
                             {cat.title}
                           </h3>
-                          <ul className="list-disc pl-5 flex flex-col gap-1">
+                          <ul className="list-disc pl-5 flex flex-col gap-1 text-sm">
                             {Array.isArray(cat.example) ? (
                               cat.example.map((item, idx) => (
                                 <li key={idx}>{item._ || item}</li> 
@@ -493,7 +541,7 @@ const CareerDetail = () => {
               </motion.div>
             </div>
 
-            <div className="min-h-[65vh]">
+            <div className="min-h-[65vh] p-10">
               <motion.div
                 className="grid grid-cols-3 gap-4 text-white"
                 initial={{ opacity: 0, y: 50 }}
@@ -501,9 +549,9 @@ const CareerDetail = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="border-2 border-gray-700 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg text-black">
-                  <h1 className="uppercase font-bold text-2xl text-[#8B4CC9] flex items-center justify-center flex-col text-center mb-4 ">
-                  <BriefcaseBusiness size={80} className="  "/>
+                <div className="border-2 border-[#BEBEBE] p-6 rounded-lg transform transition-transform duration-300  shadow-lg text-black">
+                  <h1 className="uppercase font-bold text-[22px] text-[#8B4CC9] flex items-center justify-center flex-col text-center mb-4 ">
+                  <BriefcaseBusiness size={42} className="  "/>
                     Job Outlook
                   </h1>
 
@@ -511,14 +559,12 @@ const CareerDetail = () => {
                     <>
                     
                       <div className="mb-6">
-                        <p className="">
-                          <span className="font-bold text-[#8B4CC9]">
-                            Description:
-                          </span>{" "}
+                        <p className="text-sm">
+                          {" "}
                           {jobOutlook.outlook.description}
                         </p>
-                        <p className="text-gray-300 mt-2">
-                          <span className="font-bold text-[#8B4CC9]">
+                        <p className="mt-2 text-sm text-black">
+                          <span className="font-bold text-[#8B4CC9] text-base">
                             Category:
                           </span>{" "}
                           {jobOutlook?.outlook?.category}
@@ -527,54 +573,54 @@ const CareerDetail = () => {
 
                    
                       <div className="mb-6">
-                        <p className="">
-                          <span className="font-bold text-[#8B4CC9]">
+                        <p className="text-sm">
+                          <span className="font-bold text-[#8B4CC9] text-base">
                             Bright Outlook:
                           </span>{" "}
                           {jobOutlook?.bright_outlook?.description}
                         </p>
-                        <p className="mt-2">
-                          <span className="font-bold text-[#8B4CC9]">
+                        {/* <p className="mt-2 text-sm">
+                          <span className="font-bold text-base text-[#8B4CC9]">
                             Category:
                           </span>{" "}
                           {jobOutlook?.bright_outlook?.category}
-                        </p>
+                        </p> */}
                       </div>
 
                      
                       <div className="mb-6">
-                        <p className="">
-                          <span className="font-bold text-[#8B4CC9]">
+                        <p className="text-sm">
+                          <span className="font-bold text-[#8B4CC9] text-base">
                             Annual Salary 10th Percentile:
                           </span>{" "}
                           ${jobOutlook.salary.annual_10th_percentile}
                         </p>
-                        <p className=" mt-2">
-                          <span className="font-bold text-[#8B4CC9]">
+                        <p className=" mt-2 text-sm">
+                          <span className="font-bold text-[#8B4CC9] text-base">
                             Annual Median Salary:
                           </span>{" "}
                           ${jobOutlook.salary.annual_median}
                         </p>
-                        <p className=" mt-2">
-                          <span className="font-bold text-[#8B4CC9]">
+                        <p className=" mt-2 text-sm">
+                          <span className="font-bold text-[#8B4CC9] text-base">
                             Annual Salary 90th Percentile:
                           </span>{" "}
                           ${jobOutlook.salary.annual_90th_percentile}
                         </p>
-                        <p className=" mt-2">
-                          <span className="font-bold text-[#8B4CC9]">
+                        <p className=" mt-2 text-sm">
+                          <span className="font-bold text-[#8B4CC9] text-base">
                             Hourly Salary 10th Percentile:
                           </span>{" "}
                           ${jobOutlook.salary.hourly_10th_percentile}
                         </p>
-                        <p className="mt-2">
-                          <span className="font-bold text-[#8B4CC9]">
+                        <p className="mt-2 text-sm">
+                          <span className="font-bold text-[#8B4CC9] text-base">
                             Hourly Median Salary:
                           </span>{" "}
                           ${jobOutlook.salary.hourly_median}
                         </p>
-                        <p className="mt-2">
-                          <span className="font-bold text-[#8B4CC9]">
+                        <p className="mt-2 text-sm">
+                          <span className="font-bold text-[#8B4CC9] text-base">
                             Hourly Salary 90th Percentile:
                           </span>{" "}
                           ${jobOutlook.salary.hourly_90th_percentile}
@@ -588,9 +634,9 @@ const CareerDetail = () => {
 
 
 
-<div className="border-2 border-gray-700  p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
-  <h1 className="uppercase font-bold text-2xl text-[#C94C79] flex flex-col items-center justify-center text-center mb-4">
-  <Compass size={80}/>
+<div className="border-2 border-[#BEBEBE]  p-6 rounded-lg transform transition-transform duration-300  shadow-lg">
+  <h1 className="uppercase font-bold text-[22px] text-[#C94C79] flex flex-col items-center justify-center text-center mb-4">
+  <Compass size={42}/>
     Explore More
   </h1>
 
@@ -660,19 +706,20 @@ const CareerDetail = () => {
 
 
 
-                <div className="border-2 border-gray-700 p-6 rounded-lg transform transition-transform duration-300 hover:scale-95 shadow-lg">
-                  <h1 className="uppercase font-bold text-2xl text-[#4CC9C9] text-center mb-4 flex flex-col items-center justify-center">
-                  <GraduationCap size={80}/>
+                <div className="border-2 border-[#BEBEBE] p-6 rounded-lg transform transition-transform duration-300  shadow-lg">
+                  <h1 className="uppercase font-bold text-[22px] text-[#4CC9C9] text-center mb-4 flex flex-col items-center justify-center">
+                  <GraduationCap size={42}/>
                     Education
                   </h1>
 
                   {/* Education Section */}
                   {education && (
                     <div className="mb-6">
-                      <p className="text-red-400">
+                      <p className="text-red-400 capitalize">
                         <span className="font-bold text-teal-400">
                           Education Needed:
                         </span>
+                        <br/>
                         {Array.isArray(
                           education?.education_usually_needed?.category
                         ) ? (
@@ -705,7 +752,7 @@ const CareerDetail = () => {
                         </span>
                       </p>
 
-                      <div className="flex flex-col gap-3 mt-2 text-black font-semibold">
+                      <div className="flex flex-col gap-3 mt-6 text-black font-semibold">
                         <div className="hover:bg-gray-400 h-[6vh] w-full border-2 rounded-lg flex items-center justify-center cursor-pointer">
                           Find Certification
                         </div>
@@ -751,7 +798,7 @@ const CareerDetail = () => {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="border-2 border-gray-700 p-6 rounded-lg transform transition-transform duration-300  shadow-lg flex flex-col w-[70vw]">
+                <div className="border-2 border-[#BEBEBE] p-6 rounded-lg transform transition-transform duration-300  shadow-lg flex flex-col w-[70vw]">
                   <div>
                     <h1 className="uppercase font-bold text-2xl text-center mb-4">
                       Salary Statistics
@@ -878,10 +925,12 @@ const CareerDetail = () => {
                 </div>
               </motion.div>
             </div>
+
+            
           </div>}
         
 
-          
+         
         </div>
       </div>
     </div>
