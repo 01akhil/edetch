@@ -137,7 +137,7 @@ const ResultPage = () => {
             {/* Right - Chart and Skills Info */}
             <div className="flex flex-col gap-6 ">
               {/* Chart Section */}
-              <div className="bg-white rounded-xl shadow-lg pt-12 pl-8 pr-8 pb-12 flex flex-col items-start justify-center h-[65vh] w-[80%] border border-gray-200">
+              <div className="bg-white rounded-xl shadow-lg pt-12 pl-12 pr-12 pb-12 flex flex-col items-start justify-center h-[65vh]  border border-gray-200 w-full">
                 <h2 className="text-2xl font-bold mb-4">Your Career Fit</h2>
                 {chartData && (
                   <Bar
