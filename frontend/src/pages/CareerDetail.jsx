@@ -12,6 +12,36 @@ import Loader from "../components/Loader";
 import { Footer } from "../components/Footer";
 import { Bar } from 'react-chartjs-2';
 const CareerDetail = () => {
+
+  const [hoveredZone, setHoveredZone] = useState(null);
+
+ 
+  const jobZoneDetails = {
+    1: [
+      { header: "Education:", content: "Some of these occupations may require a high school diploma or GED certificate." },
+      { header: "Related Experience:", content: "Little or no previous work-related skill, knowledge, or experience is needed for these occupations. For example, a person can become a waiter or waitress even if they have never worked before." },
+      { header: "Job Training:", content: "Employees in these occupations need anywhere from a few days to a few months of training. Usually, an experienced worker could show you how to do the job." },
+      { header: "Job Zone Examples:", content: "These occupations involve following instructions and helping others. Examples include agricultural equipment operators, dishwashers, floor sanders and finishers, landscaping and groundskeeping workers, logging equipment operators, baristas, and maids and housekeeping cleaners." }
+    ],
+    2: [{ header: "Education", content: "These occupations usually require a high school diploma." },
+      { header: "Related Experience:", content: "Some previous work-related skill, knowledge, or experience is usually needed. For example, a teller would benefit from experience working directly with the public." },
+      { header: "Job Training:", content: "Employees in these occupations need anywhere from a few months to one year of working with experienced employees. A recognized apprenticeship program may be associated with these occupations." },
+      { header: "Job Zone Examples:", content: "These occupations often involve using your knowledge and skills to help others. Examples include orderlies, counter and rental clerks, customer service representatives, security guards, upholsterers, tellers, and dental laboratory technicians." }
+    ],
+    3: [{ header: "Education", content: "Most occupations in this zone require training in vocational schools, related on-the-job experience, or an associate's degree." },
+      { header: "Related Experience:", content: "Previous work-related skill, knowledge, or experience is required for these occupations. For example, an electrician must have completed three or four years of apprenticeship or several years of vocational training, and often must have passed a licensing exam, in order to perform the job." },
+      { header: "Job Training:", content: "Employees in these occupations usually need one or two years of training involving both on-the-job experience and informal training with experienced workers. A recognized apprenticeship program may be associated with these occupations." },
+      { header: "Job Zone Examples:", content: "These occupations usually involve using communication and organizational skills to coordinate, supervise, manage, or train others to accomplish goals. Examples include hydroelectric production managers, desktop publishers, electricians, agricultural technicians, barbers, court reporters and simultaneous captioners, and medical assistants." }],
+    4: [{ header: "Education", content: "Most of these occupations require a four-year bachelor's degree, but some do not." },
+      { header: "Related Experience:", content: "A considerable amount of work-related skill, knowledge, or experience is needed for these occupations. For example, an accountant must complete four years of college and work for several years in accounting to be considered qualified." },
+      { header: "Job Training:", content: "Employees in these occupations usually need several years of work-related experience, on-the-job training, and/or vocational training." },
+      { header: "Job Zone Examples:", content: "Many of these occupations involve coordinating, supervising, managing, or training others. Examples include real estate brokers, sales managers, database administrators, graphic designers, conservation scientists, art directors, and cost estimators." }],
+    5: [{ header: "Education", content: "Most of these occupations require graduate school. For example, they may require a master's degree, and some require a Ph.D., M.D., or J.D. (law degree)." },
+      { header: "Related Experience:", content: "Extensive skill, knowledge, and experience are needed for these occupations. Many require more than five years of experience. For example, surgeons must complete four years of college and an additional five to seven years of specialized medical training to be able to do their job." },
+      { header: "Job Training:", content: "Employees may need some on-the-job training, but most of these occupations assume that the person will already have the required skills, knowledge, work-related experience, and/or training." },
+      { header: "Job Zone Examples:", content: "These occupations often involve coordinating, training, supervising, or managing the activities of others to accomplish goals. Very advanced communication and organizational skills are required. Examples include pharmacists, lawyers, astronomers, biologists, clergy, physician assistants, and veterinarians." }]
+  };
+
   const { careerCode } = useParams();
   const [careerDetail, setCareerDetail] = useState(null);
   const navigate = useNavigate();
@@ -866,51 +896,157 @@ const CareerDetail = () => {
                           Apprenticeship.gov
                         </div>
                       </div> */}
-
-<div className="flex flex-col gap-1 text-black text-[12.5px] mt-6">
-  <div>
-    <h1><strong>Job Zone 1:</strong> Little or No Preparation Needed</h1>
-   
-    <p>
-      Examples:Equipment operators, dishwashers.
-    </p>
+{/* 
+<div className="flex flex-col gap-3 text-black text-[12.5px] mt-6">
+  <div className="cursor-pointer">
+    <h1><strong>Job Zone 1:</strong></h1>
+  <h1> Little or No Preparation Needed</h1>
   </div>
 
-  <div>
-    <h1><strong>Job Zone 2:</strong> Some Preparation Needed</h1>
-   
-    <p>
-      Examples:
-      Orderlies, counter and rental clerks.
-    </p>
+  <div className="cursor-pointer">
+    <h1><strong>Job Zone 2:</strong> </h1>
+ <h1>Some Preparation Needed</h1>
   </div>
 
-  <div>
-    <h1><strong>Job Zone 3:</strong> Medium Preparation Needed</h1>
-   
-   
-    <p>
-      Examples: Desktop publishers.
-    </p>
-   
+  <div className="cursor-pointer">
+    <h1><strong>Job Zone 3:</strong> </h1>
+<h1>Medium Preparation Needed</h1>
   </div>
 
-  <div>
-    <h1><strong>Job Zone 4:</strong> High Preparation Needed</h1>
-   
-    <p>
-      Examples:Real estate brokers, sales managers.
-    </p>
-   
+  <div className="cursor-pointer">
+    <h1><strong>Job Zone 4:</strong> </h1>
+<h1>High Preparation Needed</h1>
   </div>
 
-  <div>
-    <h1><strong>Job Zone 5:</strong> Extensive Preparation Needed</h1>
-   
-    <p>
-     Examples:Pharmacists, lawyers, astronomers, biologist.
-    </p>
-  
+  <div className="cursor-pointer">
+    <h1><strong>Job Zone 5:</strong> </h1>
+  <h1>Extensive Preparation Needed</h1>
+  </div>
+</div> */}
+
+
+
+{/* <div className="flex flex-col gap-3 text-black text-[12.5px] mt-6">
+      {Object.keys(jobZoneDetails).map((zone) => (
+        <div
+          key={zone}
+          className="cursor-pointer relative group"
+          onMouseEnter={() => setHoveredZone(zone)}
+          onMouseLeave={() => setHoveredZone(null)}
+        >
+          <h1>
+            <strong>Job Zone {zone}:</strong>
+          </h1>
+          <h1>{zone === "1" ? "Little or No Preparation Needed" : "Preparation Needed"}</h1>
+          
+          {hoveredZone === zone && (
+            <div className="absolute top-[-150px] left-0 bg-white text-black text-[11px] p-2  rounded shadow-xl w-[300px] z-10 transition-all duration-300 ease-in-out transform border border-gray-100 ">
+              {jobZoneDetails[zone].map((detail, index) => (
+                <div key={index} className="mb-2">
+                  {detail.header && <h1 className="font-bold">{detail.header}</h1>}
+                  <p>{detail.content}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div> */}
+
+<div className="flex flex-col gap-4 text-black text-sm mt-6">
+  <div
+    className="cursor-pointer relative group"
+    onMouseEnter={() => setHoveredZone("1")}
+    onMouseLeave={() => setHoveredZone(null)}
+  >
+    <h1 className="font-bold text-[12.5px]">Job Zone 1:</h1>
+    <h2 className="text-gray-600 text-[12.5px]">Little or No Preparation Needed</h2>
+    {hoveredZone === "1" && (
+      <div className="absolute left-0 bg-white text-gray-800 text-[12.5px] p-4 rounded-lg shadow-lg w-[300px] z-10 transition-all duration-300 ease-in-out transform opacity-100 visible">
+        {jobZoneDetails["1"].map((detail, index) => (
+          <div key={index} className="mb-3">
+            {detail.header && <h1 className="font-semibold text-black">{detail.header}</h1>}
+            <p className="text-gray-700">{detail.content}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div
+    className="cursor-pointer relative group"
+    onMouseEnter={() => setHoveredZone("2")}
+    onMouseLeave={() => setHoveredZone(null)}
+  >
+    <h1 className="font-bold text-[12.5px]">Job Zone 2:</h1>
+    <h2 className="text-gray-600 text-[12.5px]">Some Preparation Needed</h2>
+    {hoveredZone === "2" && (
+      <div className="absolute left-0 bg-white text-gray-800 text-[12.5px] p-4 rounded-lg shadow-lg w-[300px] z-10 transition-all duration-300 ease-in-out transform opacity-100 visible">
+        {jobZoneDetails["2"].map((detail, index) => (
+          <div key={index} className="mb-3">
+            {detail.header && <h1 className="font-semibold text-black">{detail.header}</h1>}
+            <p className="text-gray-700">{detail.content}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div
+    className="cursor-pointer relative group"
+    onMouseEnter={() => setHoveredZone("3")}
+    onMouseLeave={() => setHoveredZone(null)}
+  >
+    <h1 className="font-bold text-[12.5px]">Job Zone 3:</h1>
+    <h2 className="text-gray-600 text-[12.5px]">Medium Preparation Needed</h2>
+    {hoveredZone === "3" && (
+      <div className="absolute left-0 bg-white text-gray-800 text-[12.5px] p-4 rounded-lg shadow-lg w-[300px] z-10 transition-all duration-300 ease-in-out transform opacity-100 visible">
+        {jobZoneDetails["3"].map((detail, index) => (
+          <div key={index} className="mb-3">
+            {detail.header && <h1 className="font-semibold text-black">{detail.header}</h1>}
+            <p className="text-gray-700">{detail.content}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div
+    className="cursor-pointer relative group"
+    onMouseEnter={() => setHoveredZone("4")}
+    onMouseLeave={() => setHoveredZone(null)}
+  >
+    <h1 className="font-bold text-[12.5px]">Job Zone 4:</h1>
+    <h2 className="text-gray-600 text-[12.5px]">High Preparation Needed</h2>
+    {hoveredZone === "4" && (
+      <div className="absolute left-0 bg-white text-gray-800 text-[12.5px] p-4 rounded-lg shadow-lg w-[300px] z-10 transition-all duration-300 ease-in-out transform opacity-100 visible">
+        {jobZoneDetails["4"].map((detail, index) => (
+          <div key={index} className="mb-3">
+            {detail.header && <h1 className="font-semibold text-black">{detail.header}</h1>}
+            <p className="text-gray-700">{detail.content}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div
+    className="cursor-pointer relative group "
+    onMouseEnter={() => setHoveredZone("5")}
+    onMouseLeave={() => setHoveredZone(null)}
+  >
+    <h1 className="font-bold text-[12.5px]">Job Zone 5:</h1>
+    <h2 className="text-gray-600 text-[12.5px]">Extensive Preparation Needed</h2>
+    {hoveredZone === "5" && (
+      <div className="absolute left-0 bg-white text-gray-800 text-[12.5px] p-4 rounded-lg shadow-lg w-[300px] z-10 transition-all duration-300 ease-in-out transform opacity-100 visible ">
+        {jobZoneDetails["5"].map((detail, index) => (
+          <div key={index} className="mb-3">
+            {detail.header && <h1 className="font-semibold text-black">{detail.header}</h1>}
+            <p className="text-gray-700">{detail.content}</p>
+          </div>
+        ))}
+      </div>
+    )}
   </div>
 </div>
 
@@ -938,43 +1074,79 @@ const CareerDetail = () => {
             </div>
 
             {/* salary card */}
-{/* 
-            <div className="flex items-center justify-center h-[80vh] bg-white">
-      <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center h-[60vh] w-[50%]">
-        <h2 className="text-md font-semibold mb-4 text-gray-700">Salary Statistics</h2>
-        {chartData && (
-          <Bar
-            data={chartData}
-            options={{
-              plugins: {
-                legend: { display: true, position: 'top' },
-              },
-              responsive: true,
-              maintainAspectRatio: false,
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  title: {
-                    display: true,
-                    text: 'Amount ($)',
-                    color: '#374151',
-                  },
-                },
-                x: {
-                  title: {
-                    display: true,
-                    text: 'Salary Percentiles',
-                    color: '#374151',
-                  },
-                },
-              },
-            }}
-          />
-        )}
-      </div>
-    </div>
 
-             */}
+   
+<div className="flex items-center justify-center h-[55vh] mt-[10vh] ">
+  <div className="bg-white rounded-xl shadow-2xl p-6 flex flex-col items-center justify-center h-[60vh] w-[50%]">
+    <h2 className="text-lg font-bold mb-4 text-gray-800">Salary Statistics</h2>
+    {chartData && (
+      <div className="h-[70%] w-full">
+        <Bar
+          data={chartData}
+          options={{
+            plugins: {
+              legend: { display: true, position: "top" },
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "Amount ($)",
+                  color: "#374151",
+                  font: {
+                    weight: "bold",
+                    size: 14,
+                  },
+                },
+                grid: {
+                  color: "rgba(55, 65, 81, 0.2)",
+                },
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: "Salary Percentiles",
+                  color: "#374151",
+                  font: {
+                    weight: "bold",
+                    size: 14,
+                  },
+                },
+                grid: {
+                  color: "rgba(55, 65, 81, 0.2)",
+                },
+              },
+            },
+            elements: {
+              bar: {
+                borderRadius: 5, // Rounded edges for bars
+                backgroundColor: (context) => {
+                  const gradient = context.chart.ctx.createLinearGradient(
+                    0,
+                    0,
+                    0,
+                    300
+                  );
+                  gradient.addColorStop(0, "#4e73df");
+                  gradient.addColorStop(0.5, "#224abe");
+                  gradient.addColorStop(1, "#11297d");
+                  return gradient;
+                },
+                borderColor: "rgba(0, 0, 0, 0.1)", // Add border for 3D effect
+                borderWidth: 2,
+              },
+            },
+          }}
+        />
+      </div>
+    )}
+  </div>
+</div>
+
+            
 
              <div className="h-[29vh] w-full flex items-center justify-center mb-3">
 <Footer className=""/>
