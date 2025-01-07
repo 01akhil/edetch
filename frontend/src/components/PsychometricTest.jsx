@@ -628,6 +628,10 @@ const PsychometricTest = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
+
+    if (updatedSelections.every((opt) => opt !== undefined)) {
+      navigate('/psychometric-test/result', { state: { answerString: updatedAnswers } });
+    }
   };
 
   const handleNext = () => {
