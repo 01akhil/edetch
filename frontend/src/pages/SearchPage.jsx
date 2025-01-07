@@ -62,7 +62,7 @@ const SearchPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.1, duration: 0.5 }}
       >
-        <span className="text-lg font-medium">{career.title}</span>
+        <span className="text-md font-medium">{career.title}</span>
         <motion.div
           className=" group-hover:scale-105 flex justify-center items-center"
           initial={{ opacity: 0, x: -20 }}

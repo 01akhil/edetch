@@ -100,15 +100,15 @@ const ResultPage = () => {
 
       {!loading && (
         <>
-          <div className="mx-auto flex items-center flex-col justify-center">
-            <h1 className="font-bold text-2xl">Results</h1>
-            <p className="text-sm">Congrats for completing the test! Here's your result</p>
-            <h1 className="text-[#4CC9B3] text-lg font-semibold">Recommended Career Options</h1>
+          <div className="mx-auto flex items-center flex-col justify-center p-6">
+            <h1 className="font-bold text-4xl">Results</h1>
+            <p className="text-sm mt-1">Congrats for completing the test! Here's your result</p>
+            <h1 className="text-[#4CC9B3] text-[22px] ">Recommended Career Options</h1>
           </div>
 
-          <div className="flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+          <div className="flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 pl-9 pr-9 pb-9 pt-6">
             {/* Left - Career List */}
-            <div className="col-span-1 bg-white rounded-xl shadow-lg p-6 overflow-y-auto border border-gray-200">
+            <div className="col-span-1 bg-white rounded-xl shadow-lg p-8 overflow-y-auto border border-gray-200">
               <h2 className="text-2xl font-bold mb-4">Best Jobs For You</h2>
               {error && <p className="text-center text-red-600">{error}</p>}
               {!error && careerInfo.length > 0 ? (
@@ -123,7 +123,7 @@ const ResultPage = () => {
                       onClick={() => handleCareerClick(career.code)}
                     >
                       <div className="flex justify-between items-center">
-                        <h3 className="text-lg font-medium">{career.title}</h3>
+                        <h3 className="text-md font-medium">{career.title}</h3>
                         <CircleArrowRight />
                       </div>
                     </motion.li>
@@ -135,10 +135,10 @@ const ResultPage = () => {
             </div>
 
             {/* Right - Chart and Skills Info */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 ">
               {/* Chart Section */}
-              <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center h-[50vh] w-[80%]">
-                <h2 className="text-xl font-semibold mb-4">Your Career Fit</h2>
+              <div className="bg-white rounded-xl shadow-lg pt-12 pl-8 pr-8 pb-12 flex flex-col items-start justify-center h-[65vh] w-[80%] border border-gray-200">
+                <h2 className="text-2xl font-bold mb-4">Your Career Fit</h2>
                 {chartData && (
                   <Bar
                     data={chartData}
@@ -166,8 +166,8 @@ const ResultPage = () => {
           // Add other skill descriptions here...
         ].map((skill, idx) => (
           <div key={idx} className="mb-4">
-            <h3 className={`text-lg font-semibold text-[${skill.color}]`}>{skill.label}</h3>
-            <p className="text-gray-700">{skill.text}</p>
+            <h3 className={`text-md font-semibold text-[${skill.color}]`}>{skill.label}</h3>
+            <p className="text-gray-700 text-sm">{skill.text}</p>
           </div>
         ))}
       </div>

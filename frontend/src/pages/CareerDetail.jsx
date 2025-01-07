@@ -344,7 +344,7 @@ const CareerDetail = () => {
            <div className="w-full flex gap-2 pl-9 pr-9">
            <div className="w-[65%]  flex flex-col">
             
-              <h1 className="font-bold text-[22px] leading-[16px]">1. Career Overview</h1>
+              <h1 className="font-bold text-[22px] leading-[16px]"> Career Overview</h1>
 
               <motion.div
                 className="flex gap-1"
@@ -623,12 +623,13 @@ const CareerDetail = () => {
 
                    
                       <div className="mb-6 pl-9 pr-9">
-                        <p className="text-sm">
-                          <span className="font-bold text-[#8B4CC9] text-sm">
-                            Bright Outlook:
-                          </span>{" "}
-                          {jobOutlook?.bright_outlook?.description}
-                        </p>
+                      <p className="text-sm">
+  <span className="font-bold text-[#8B4CC9] text-sm">
+    Bright Outlook:
+  </span>{" "}
+  {jobOutlook?.bright_outlook?.description || "Career has a steady demand"}
+</p>
+
                         {/* <p className="mt-2 text-sm">
                           <span className="font-bold text-base text-[#8B4CC9]">
                             Category:
@@ -638,7 +639,7 @@ const CareerDetail = () => {
                       </div>
 
                      
-                      <div className="mb-6 pl-9 pr-9">
+                      {/* <div className="mb-6 pl-9 pr-9">
                         <p className="text-sm">
                           <span className="font-bold text-[#8B4CC9] text-sm">
                             Annual Salary 10th Percentile:
@@ -675,7 +676,62 @@ const CareerDetail = () => {
                           </span>{" "}
                           ${jobOutlook.salary.hourly_90th_percentile}
                         </p>
-                      </div>
+                      </div> */}
+
+{jobOutlook?.salary && (
+  <div className="mb-6 pl-9 pr-9">
+    {jobOutlook.salary.annual_10th_percentile && (
+      <p className="text-sm">
+        <span className="font-bold text-[#8B4CC9] text-sm">
+          Annual Salary 10th Percentile:
+        </span>{" "}
+        ${jobOutlook.salary.annual_10th_percentile}
+      </p>
+    )}
+    {jobOutlook.salary.annual_median && (
+     <p className="mt-2 text-sm">
+     <span className="font-bold text-[#8B4CC9] text-sm">
+       Annual Median Salary:
+     </span>{" "}
+     ${jobOutlook.salary?.annual_median || "NA"}
+   </p>
+   
+    )}
+    {jobOutlook.salary.annual_90th_percentile && (
+      <p className="mt-2 text-sm">
+        <span className="font-bold text-[#8B4CC9] text-sm">
+          Annual Salary 90th Percentile:
+        </span>{" "}
+        ${jobOutlook.salary.annual_90th_percentile}
+      </p>
+    )}
+    {jobOutlook.salary.hourly_10th_percentile && (
+      <p className="mt-2 text-sm">
+        <span className="font-bold text-[#8B4CC9] text-sm">
+          Hourly Salary 10th Percentile:
+        </span>{" "}
+        ${jobOutlook.salary.hourly_10th_percentile}
+      </p>
+    )}
+    {jobOutlook.salary.hourly_median && (
+      <p className="mt-2 text-sm">
+        <span className="font-bold text-[#8B4CC9] text-sm">
+          Hourly Median Salary:
+        </span>{" "}
+        ${jobOutlook.salary.hourly_median}
+      </p>
+    )}
+    {jobOutlook.salary.hourly_90th_percentile && (
+      <p className="mt-2 text-sm">
+        <span className="font-bold text-[#8B4CC9] text-sm">
+          Hourly Salary 90th Percentile:
+        </span>{" "}
+        ${jobOutlook.salary.hourly_90th_percentile}
+      </p>
+    )}
+  </div>
+)}
+
                     </>
                   ) : (
                     <p className="text-gray-300">Loading...</p>

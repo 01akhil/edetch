@@ -13,7 +13,7 @@
 //         <path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0" clipRule="evenodd"></path>
 //       </g>
 //     </svg>
-//   ), // Strongly dislike
+//   ), // Strongly Like
 //   2: (
 //     <svg className="hover:fill-[white]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
 //       <g fillRule="evenodd">
@@ -21,7 +21,7 @@
 //         <path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 9c1.267 0 2.427.473 3.308 1.25a1 1 0 1 1-1.324 1.5A3 3 0 0 0 12 15c-.761 0-1.455.282-1.984.75a1 1 0 1 1-1.323-1.5A5 5 0 0 1 12 13M8.5 8a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3m7 0a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3"></path>
 //       </g>
 //     </svg>
-//   ), // Dislike
+//   ), // Like
 //   3: (
 //     <svg className="hover:fill-[white]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
 //       <g>
@@ -48,8 +48,8 @@
 
 
 // const options = [
-//   { id: 1, text: "Strongly dislike",emoji: optionEmojis[1] },
-//   { id: 2, text: "Dislike",emoji: optionEmojis[2] },
+//   { id: 1, text: "Strongly Like",emoji: optionEmojis[1] },
+//   { id: 2, text: "Like",emoji: optionEmojis[2] },
 //   { id: 3, text: "Not sure",emoji: optionEmojis[3] },
 //   { id: 4, text: "Like",  emoji: optionEmojis[4] },
 //   { id: 5, text: "Strongly like", emoji: optionEmojis[5]  },
@@ -268,297 +268,298 @@
 
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
-import { ChevronLeft,ChevronRight } from 'lucide-react';
+import { ChevronLeft,ChevronRight, Linkedin } from 'lucide-react';
 import {Footer} from './Footer';
 import { Navigate, useNavigate } from "react-router-dom";
+
 
 
 const PsychometricTest = () => {
 
   const navigate=useNavigate();
 
+
+
     const questions = [
     {
       text: "Build kitchen cabinets",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Lay brick or tile",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Develop a new medicine",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Likely", "Strongly likely"],
+      options: ["Strongly Like", "Like", "Not sure", "Disikely", "Strongly Dislike"],
     },
     {
       text: "Study ways to reduce water pollution",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Write books or plays",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Play a musical instrument",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Teach an individual an exercise routine",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Help people with personal or emotional problems",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Buy and sell stocks and bonds",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Manage a retail store",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike" ,"Strongly Dislike"],
     },
 
     {
       text: "Develop a spreadsheet using computer software",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Proofread records or forms",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Repair household appliances",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Raise fish in a fish hatchery",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Conduct chemical experiments",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Study the movement of planets",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Compose or arrange music",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Draw pictures",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Give career guidance to people",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Perform rehabilitation therapy",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Operate a beauty salon or barber shop",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Manage a department within a large company",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Install software across computers on a large network",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
 
     {
       text: "Operate a calculator",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Assemble electronic parts",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Drive a truck to deliver packages to offices and homes",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Examine blood samples using a microscope",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Investigate the cause of a fire",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Create special effects for movies",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Paint sets for plays",
-      options: ["Strongly dislike", "Dislike", "Not sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Do volunteer work at a non-profit organization",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Teach children how to play sports",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Start your own business",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Negotiate business contracts",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Keep shipping and receiving records",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Calculate the wages of employees",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Test the quality of parts before shipment",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Repair and install locks",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Develop a way to better predict the weather",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Work in a biology lab",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Write scripts for movies or television shows",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Perform jazz or tap dance",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Teach sign language to people who are deaf or hard of hearing",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Help conduct a group therapy session",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Represent a client in a lawsuit",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Market a new line of clothing",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Inventory supplies using a hand-held computer",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Record rent payments",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Set up and operate machines to make products",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Put out forest fires",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Invent a replacement for sugar",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Do laboratory tests to identify diseases",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Sing in a band",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Edit movies",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Take care of children at a day-care center",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Teach a high-school class",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Sell merchandise at a department store",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Manage a clothing store",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
     {
       text: "Keep inventory records",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure","Dislike", "Strongly Dislike"],
     },
     {
       text: "Stamp, sort, and distribute mail for an organization",
-      options: ["Strongly dislike", "Dislike", "Not Sure", "Like", "Strongly Like"],
+      options: ["Strongly Like", "Like", "Not Sure", "Dislike", "Strongly Dislike"],
     },
   ];
 
 
   const optionEmojis = {
   1: (
-    <svg className="hover:fill-[#4CC9B3]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
-      <g>
-        <path d="M9.704 7.54a2 2 0 0 1-.318.712c-.184.263-.42.461-.72.541c-.298.08-.602.027-.893-.108a2 2 0 0 1-.631-.459l-1.131.986c.229.262.625.598 1.13.833c.51.237 1.183.393 1.914.197c.732-.196 1.236-.667 1.56-1.128c.319-.455.494-.944.561-1.286zm4.593 0c.03.154.13.444.318.712c.184.263.42.461.72.541c.298.08.602.027.893-.108c.298-.139.528-.34.631-.459l1.131.986a3.5 3.5 0 0 1-1.13.833c-.51.237-1.182.393-1.914.197c-.731-.196-1.236-.667-1.56-1.128a3.5 3.5 0 0 1-.56-1.286z"></path>
-        <path fillRule="evenodd" d="M8.641 12.641A4.75 4.75 0 0 1 16.75 16v.75h-9.5V16c0-1.26.5-2.468 1.391-3.359M12 12.75a3.25 3.25 0 0 0-3.162 2.5h6.324A3.25 3.25 0 0 0 12 12.75" clipRule="evenodd"></path>
-        <path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0" clipRule="evenodd"></path>
-      </g>
-    </svg>
-  ), // Strongly dislike
+    <svg className="hover:fill-[white]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
+    <path className="hover:fill-[white]" fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2m0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8s8 3.589 8 8s-3.589 8-8 8"></path>
+    <circle  cx={8.5} cy={9.5} r={1.5} fill="currentColor"></circle>
+    <circle cx={15.493} cy={9.493} r={1.493} fill="currentColor"></circle>
+    <path fill="currentColor" d="M12 18c5 0 6-5 6-5H6s1 5 6 5"></path>
+  </svg>
+   
+  ), // Strongly Like
   2: (
     <svg className="hover:fill-[white]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
-      <g fillRule="evenodd">
-        <path fill="currentColor" d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"></path>
-        <path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 9c1.267 0 2.427.473 3.308 1.25a1 1 0 1 1-1.324 1.5A3 3 0 0 0 12 15c-.761 0-1.455.282-1.984.75a1 1 0 1 1-1.323-1.5A5 5 0 0 1 12 13M8.5 8a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3m7 0a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3"></path>
-      </g>
-    </svg>
-  ), // Dislike
+    <path d="M8.36 15.33a1 1 0 0 0-.13 1.4a1 1 0 0 0 1.41.13a3.76 3.76 0 0 1 4.72 0a1 1 0 0 0 .64.23a1 1 0 0 0 .64-1.76a5.81 5.81 0 0 0-7.28 0m.85-4.79a1 1 0 0 0 1.41 0a1 1 0 0 0 0-1.41a3.08 3.08 0 0 0-4.24 0a1 1 0 1 0 1.41 1.41a1 1 0 0 1 1.42 0M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2m0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8m5.62-10.87a3.08 3.08 0 0 0-4.24 0a1 1 0 0 0 1.41 1.41a1 1 0 0 1 1.42 0a1 1 0 0 0 1.41 0a1 1 0 0 0 0-1.41"></path>
+  </svg>
+    
+  ), // Like
   3: (
     <svg className="hover:fill-[white]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
       <g>
@@ -569,16 +570,20 @@ const PsychometricTest = () => {
   ), // Unsure
   4: (
     <svg className="hover:fill-[white]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
-      <path d="M8.36 15.33a1 1 0 0 0-.13 1.4a1 1 0 0 0 1.41.13a3.76 3.76 0 0 1 4.72 0a1 1 0 0 0 .64.23a1 1 0 0 0 .64-1.76a5.81 5.81 0 0 0-7.28 0m.85-4.79a1 1 0 0 0 1.41 0a1 1 0 0 0 0-1.41a3.08 3.08 0 0 0-4.24 0a1 1 0 1 0 1.41 1.41a1 1 0 0 1 1.42 0M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2m0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8m5.62-10.87a3.08 3.08 0 0 0-4.24 0a1 1 0 0 0 1.41 1.41a1 1 0 0 1 1.42 0a1 1 0 0 0 1.41 0a1 1 0 0 0 0-1.41"></path>
+      <g fillRule="evenodd">
+        <path fill="currentColor" d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"></path>
+        <path fill="currentColor" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 9c1.267 0 2.427.473 3.308 1.25a1 1 0 1 1-1.324 1.5A3 3 0 0 0 12 15c-.761 0-1.455.282-1.984.75a1 1 0 1 1-1.323-1.5A5 5 0 0 1 12 13M8.5 8a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3m7 0a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3"></path>
+      </g>
     </svg>
   ), // Like
   5: (
-    <svg className="hover:fill-[white]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
-      <path className="hover:fill-[white]" fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2m0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8s8 3.589 8 8s-3.589 8-8 8"></path>
-      <circle  cx={8.5} cy={9.5} r={1.5} fill="currentColor"></circle>
-      <circle cx={15.493} cy={9.493} r={1.493} fill="currentColor"></circle>
-      <path fill="currentColor" d="M12 18c5 0 6-5 6-5H6s1 5 6 5"></path>
-    </svg>
+    <svg className="hover:fill-[#4CC9B3]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width={30} viewBox="0 0 24 24">
+    <g>
+      <path d="M9.704 7.54a2 2 0 0 1-.318.712c-.184.263-.42.461-.72.541c-.298.08-.602.027-.893-.108a2 2 0 0 1-.631-.459l-1.131.986c.229.262.625.598 1.13.833c.51.237 1.183.393 1.914.197c.732-.196 1.236-.667 1.56-1.128c.319-.455.494-.944.561-1.286zm4.593 0c.03.154.13.444.318.712c.184.263.42.461.72.541c.298.08.602.027.893-.108c.298-.139.528-.34.631-.459l1.131.986a3.5 3.5 0 0 1-1.13.833c-.51.237-1.182.393-1.914.197c-.731-.196-1.236-.667-1.56-1.128a3.5 3.5 0 0 1-.56-1.286z"></path>
+      <path fillRule="evenodd" d="M8.641 12.641A4.75 4.75 0 0 1 16.75 16v.75h-9.5V16c0-1.26.5-2.468 1.391-3.359M12 12.75a3.25 3.25 0 0 0-3.162 2.5h6.324A3.25 3.25 0 0 0 12 12.75" clipRule="evenodd"></path>
+      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2M4 12a8 8 0 1 1 16 0a8 8 0 0 1-16 0" clipRule="evenodd"></path>
+    </g>
+  </svg>
   ), // Strongly Like
 };
 
@@ -587,17 +592,38 @@ const PsychometricTest = () => {
   const [selectedOptions, setSelectedOptions] = useState(Array(questions.length).fill(undefined));
   const [answerString, setAnswerString] = useState("");
 
+  // const handleOptionSelect = (optionIndex) => {
+  //   const updatedSelections = [...selectedOptions];
+  //   updatedSelections[currentQuestionIndex] = optionIndex;
+  //   setSelectedOptions(updatedSelections);
+
+  //   // Update the answer string
+  //   const updatedAnswers = updatedSelections
+  //     .map((opt) => (opt !== undefined ? String(opt + 1) : "-"))
+  //     .join("");
+  //   setAnswerString(updatedAnswers);
+
+  //   // Automatically move to the next question if not the last one
+  //   if (currentQuestionIndex < questions.length - 1) {
+  //     setCurrentQuestionIndex(currentQuestionIndex + 1);
+  //   }
+  // };
+
   const handleOptionSelect = (optionIndex) => {
     const updatedSelections = [...selectedOptions];
     updatedSelections[currentQuestionIndex] = optionIndex;
     setSelectedOptions(updatedSelections);
-
-    // Update the answer string
+  
+    // Map optionIndex to specific values
+    const valueMap = [5,4, 3, 2, 1]; // Map optionIndex 0 -> 4, 1 -> 3, 2 -> 2, 3 -> 1
+    const mappedValue = valueMap[optionIndex];
+  
+    // Update the answer string with mapped values
     const updatedAnswers = updatedSelections
-      .map((opt) => (opt !== undefined ? String(opt + 1) : "-"))
+      .map((opt) => (opt !== undefined ? String(valueMap[opt]) : "-"))
       .join("");
     setAnswerString(updatedAnswers);
-
+  
     // Automatically move to the next question if not the last one
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);

@@ -63,7 +63,7 @@ const BrowseByIndustry = () => {
                     transition={{ delay: index * 0.1, duration: 0.5 }}
                   >
                     <div className="flex justify-between items-center w-full">
-                      <h3 className="text-lg font-medium">{career.title}</h3>
+                      <h3 className="text-md font-medium">{career.title}</h3>
                       <motion.div
                         className=""
                         initial={{ opacity: 0, x: -20 }}
